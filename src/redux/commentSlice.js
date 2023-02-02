@@ -21,4 +21,8 @@ const commentSlice = () =>
     },
   })
 
-export default commentSlice
+const { actions, reducer } = commentSlice
+
+export const { addComment, removeComment, editComment } = actions
+
+export default reducer
