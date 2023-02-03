@@ -1,4 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { v4 as uuidv4 } from 'uuid'
+
+const now = new Date()
 
 const initialState = [
   {
@@ -73,7 +76,26 @@ const slice = {
   initialState,
   reducers: {
     addComment: (state = '', action) => {
-      state.push(action.payload)
+      const { user, comment } = action.payload
+      const { comments } = state
+
+      const newComment = {
+        id: uuidv4(),
+        content: comment,
+        createdAt: now.getTime(),
+        score: 0,
+        user: {
+          image: {
+            png: `./images/avatars/image-${user}.png`,
+            webp: `./images/avatars/image-${user}.webp`,
+          },
+          username: user.username,
+        },
+      }
+      localStorage.setItem('comments', JSON.stringify(...comments, newComment))
+      return {
+        comments: [...comments, newComment],
+      }
     },
     removeComment: (state, action) => {
       return state.filter((comment) => comment.id !== action.payload)
