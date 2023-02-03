@@ -98,7 +98,15 @@ const slice = {
       }
     },
     removeComment: (state, action) => {
-      return state.filter((comment) => comment.id !== action.payload)
+      const { id } = action.payload
+      const { comments } = state
+      localStorage.setItem(
+        'comments',
+        JSON.stringify(comments.filter((comment) => comment.id !== id))
+      )
+      return {
+        comments: comments.filter((comment) => comment.id !== id),
+      }
     },
     editComment: (state, action) => {
       const { id, newComment } = action.payload
