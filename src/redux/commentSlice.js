@@ -115,6 +115,48 @@ const slice = {
         existingComment.comment = newComment
       }
     },
+    incrementScore: (state, action) => {
+      const { id, score } = action.payload
+      const { comments } = state
+      localStorage.setItem(
+        'comments',
+        JSON.stringify(
+          comments.map((comment) =>
+            comment.id === id
+              ? { ...comment, score: score + 1, hasVoted: true }
+              : comment
+          )
+        )
+      )
+      return {
+        comments: comments.map((comment) =>
+          comment.id === id
+            ? { ...comment, score: score + 1, hasVoted: true }
+            : comment
+        ),
+      }
+    },
+    decrementScore: (state, action) => {
+      const { id, score } = action.payload
+      const { comments } = state
+      localStorage.setItem(
+        'comments',
+        JSON.stringify(
+          comments.map((comment) =>
+            comment.id === id
+              ? { ...comment, score: score - 1, hasVoted: true }
+              : comment
+          )
+        )
+      )
+      return {
+        comments: comments.map((comment) =>
+          comment.id === id
+            ? { ...comment, score: score - 1, hasVoted: true }
+            : comment
+        ),
+      }
+    },
   },
 }
 
