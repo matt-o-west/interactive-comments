@@ -4,7 +4,7 @@ import { incrementScore, decrementScore } from '../redux/commentSlice'
 
 const Counter = ({ children, id }) => {
   const comment = useSelector((state) =>
-    state.comments.comments.find((comment) => comment.id === id)
+    state.commentReducer[0].comments.find((comment) => comment.id === id)
   )
   const dispatch = useDispatch()
 
@@ -13,7 +13,7 @@ const Counter = ({ children, id }) => {
       <button onClick={() => dispatch(incrementScore())}>
         <span className='font-bold text-slate-700'>+</span>
       </button>
-      <input type='text' value={children} />
+      <input type='text' value={children} readOnly />
       <button onClick={() => dispatch(decrementScore())}>
         <span className='font-bold text-slate-700'>-</span>
       </button>
