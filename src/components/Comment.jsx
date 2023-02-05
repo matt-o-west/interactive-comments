@@ -1,14 +1,7 @@
 import React from 'react'
+import Counter from './Counter'
 
-const Comment = ({
-  id,
-  content,
-  createdAt,
-  score,
-  user,
-  username,
-  replies,
-}) => {
+const Comment = ({ content, createdAt, score, user, username }) => {
   return (
     <>
       <div className='grid grid-cols-3 grid-rows-2'>
@@ -25,7 +18,6 @@ const Comment = ({
           <p>{content}</p>
         </div>
       </div>
-      {replies && replies.map((reply) => <Comment {...reply} />)}
     </>
   )
 }

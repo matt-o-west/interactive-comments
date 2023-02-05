@@ -162,6 +162,12 @@ const slice = {
 
 const { actions, reducer } = createSlice(slice)
 
-export const { addComment, removeComment, editComment } = actions
+export const {
+  addComment,
+  removeComment,
+  editComment,
+  incrementScore,
+  decrementScore,
+} = actions
 
 export default reducer
