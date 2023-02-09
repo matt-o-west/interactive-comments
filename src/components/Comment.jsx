@@ -1,15 +1,16 @@
 import React from 'react'
 import Counter from './Counter'
+import { addComment, removeComment, editComment } from '../redux/commentSlice'
 
 const Comment = ({ content, createdAt, score, user, replies }) => {
   const { username } = user
-  console.log(username)
+  console.log(score)
 
   return (
     <>
       <div className='grid grid-cols-3 grid-rows-2'>
         <div className='col-span-1 row-span-2'>
-          <Counter>{score}</Counter>
+          <Counter score={score}>{score}</Counter>
         </div>
         <div className='col-span-1 row-span-1'>
           <img
