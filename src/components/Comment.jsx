@@ -1,7 +1,10 @@
 import React from 'react'
 import Counter from './Counter'
 
-const Comment = ({ content, createdAt, score, user, username }) => {
+const Comment = ({ content, createdAt, score, user, replies }) => {
+  const { username } = user
+  console.log(username)
+
   return (
     <>
       <div className='grid grid-cols-3 grid-rows-2'>
@@ -9,13 +12,21 @@ const Comment = ({ content, createdAt, score, user, username }) => {
           <Counter>{score}</Counter>
         </div>
         <div className='col-span-1 row-span-1'>
-          <img src={user.image.png} alt='avatar image' />
+          <img
+            src={`src/images/avatars/image-${username}.png`}
+            alt='avatar image'
+          />
           <p>{username}</p>
           <p>{createdAt}</p>
         </div>
         <button className='btn btn-primary'>Reply</button>
         <div className='col-span-2 row-span-1'>
           <p>{content}</p>
+        </div>
+        <div className='w-2/3'>
+          {replies?.map((reply) => (
+            <Comment key={reply.id} {...reply} />
+          ))}
         </div>
       </div>
     </>
