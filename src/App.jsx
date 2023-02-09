@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 import { useSelector, useDispatch } from 'react-redux'
 import store from './redux/commentStore'
