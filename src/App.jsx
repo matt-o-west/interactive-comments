@@ -8,7 +8,7 @@ const state = store.getState()
 
 function App() {
   //const user = useSelector((state) => state.user)
-  const comments = useSelector((state) => state.commentReducer[0].comments)
+  const comments = useSelector((state) => state.commentReducer.comments)
   console.log(comments)
 
   return (
