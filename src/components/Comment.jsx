@@ -2,7 +2,7 @@ import React from 'react'
 import Counter from './Counter'
 import { addComment, removeComment, editComment } from '../redux/commentSlice'
 
-const Comment = ({ content, createdAt, score, user, replies, id }) => {
+const Comment = ({ content, createdAt, score, user, replies, id, comment }) => {
   const { username } = user
   console.log(score)
 
@@ -10,9 +10,7 @@ const Comment = ({ content, createdAt, score, user, replies, id }) => {
     <>
       <div className='grid grid-cols-3 grid-rows-2'>
         <div className='col-span-1 row-span-2'>
-          <Counter score={score} id={id}>
-            {score}
-          </Counter>
+          <Counter score={score} id={id} comment={comment}></Counter>
         </div>
         <div className='col-span-1 row-span-1'>
           <img

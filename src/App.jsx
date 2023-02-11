@@ -15,7 +15,7 @@ function App() {
     <div className='App'>
       {comments &&
         comments.map((comment) => {
-          return <Comment {...comment} key={comment.id} />
+          return <Comment {...comment} key={comment.id} comment={comment} />
         })}
     </div>
   )

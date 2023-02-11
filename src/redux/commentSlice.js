@@ -117,28 +117,18 @@ const slice = {
       const comment = state.comments.find(
         (comment) => comment.id === action.payload
       )
-      console.log(comment)
-      //comment.score++
+      if (comment) {
+        console.log(state.comments)
+        comment.score++
+      }
     },
     decrementScore: (state, action) => {
-      const { id, score } = action.payload
-      const { comments } = state
-      localStorage.setItem(
-        'comments',
-        JSON.stringify(
-          comments.map((comment) =>
-            comment.id === id
-              ? { ...comment, score: score - 1, hasVoted: true }
-              : comment
-          )
-        )
+      const comment = state.comments.find(
+        (comment) => comment.id === action.payload
       )
-      return {
-        comments: comments.map((comment) =>
-          comment.id === id
-            ? { ...comment, score: score - 1, hasVoted: true }
-            : comment
-        ),
+      if (comment) {
+        console.log(state.comments)
+        comment.score--
       }
     },
   },
