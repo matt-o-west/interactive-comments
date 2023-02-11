@@ -113,6 +113,42 @@ const slice = {
         existingComment.comment = newComment
       }
     },
+    addReply: (state, action) => {
+      const { id, user, comment } = action.payload
+      const { comments } = state
+      const newReply = {
+        id: uuidv4(),
+        content: comment,
+        createdAt: now.getTime(),
+        score: 0,
+        replyingTo: user,
+        user: {
+          image: {
+            png: `./images/avatars/image-${user}.png`,
+            webp: `./images/avatars/image-${user}.webp`,
+          },
+          username: user.username,
+        },
+      }
+    },
+    removeReply: (state, action) => {
+      const { id } = action.payload
+      const { comments } = state
+      localStorage.setItem(
+        'comments',
+        JSON.stringify(comments.filter((comment) => comment.id !== id))
+      )
+      return {
+        comments: comments.filter((comment) => comment.id !== id),
+      }
+    },
+    editReply: (state, action) => {
+      const { id, newComment } = action.payload
+      const existingComment = state.find((comment) => comment.id === id)
+      if (existingComment) {
+        existingComment.comment = newComment
+      }
+    },
     incrementScore: (state, action) => {
       const comment = state.comments.find(
         (comment) => comment.id === action.payload
@@ -140,6 +176,9 @@ export const {
   addComment,
   removeComment,
   editComment,
+  addReply,
+  removeReply,
+  editReply,
   incrementScore,
   decrementScore,
 } = actions
