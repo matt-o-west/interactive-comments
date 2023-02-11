@@ -2,11 +2,25 @@ import React, { useState } from 'react'
 import Counter from './Counter'
 import { addComment, removeComment, editComment } from '../redux/commentSlice'
 import ReplyTextArea from './ReplyTextArea'
+import Modal from './Modal'
 
 const Comment = ({ content, createdAt, score, user, replies, id, comment }) => {
   const { username } = user
   const [replyTextArea, setReplyTextArea] = useState(true)
-  console.log(score)
+  const [isModalOpen, setModalOpen] = useState(false)
+
+  const handleDeleteClick = () => {
+    setModalOpen(true)
+  }
+
+  const handleCancelDelete = () => {
+    setModalOpen(false)
+  }
+
+  const handleConfirmDelete = () => {
+    setModalOpen(false)
+    onDelete()
+  }
 
   const handleReplyClick = () => {
     console.log(replyTextArea)
@@ -30,6 +44,12 @@ const Comment = ({ content, createdAt, score, user, replies, id, comment }) => {
         <button className='btn btn-primary' onClick={handleReplyClick}>
           Reply
         </button>
+        <button onClick={handleDeleteClick}>Delete</button>
+        <Modal
+          isOpen={isModalOpen}
+          onCancel={handleCancelDelete}
+          onConfirm={handleConfirmDelete}
+        />
         <div className='col-span-2 row-span-1'>
           <p>{content}</p>
         </div>
