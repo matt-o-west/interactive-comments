@@ -5,17 +5,12 @@ import ReplyTextArea from './ReplyTextArea'
 
 const Comment = ({ content, createdAt, score, user, replies, id, comment }) => {
   const { username } = user
-  const [replyTextArea, setReplyTextArea] = useState(false)
+  const [replyTextArea, setReplyTextArea] = useState(true)
   console.log(score)
 
   const handleReplyClick = () => {
-    console.log('reply')
-
-    return (
-      <div>
-        <textarea></textarea>
-      </div>
-    )
+    console.log(replyTextArea)
+    setReplyTextArea(!replyTextArea)
   }
 
   return (
@@ -32,7 +27,9 @@ const Comment = ({ content, createdAt, score, user, replies, id, comment }) => {
           <p>{username}</p>
           <p>{createdAt}</p>
         </div>
-        <button className='btn btn-primary'>Reply</button>
+        <button className='btn btn-primary' onClick={handleReplyClick}>
+          Reply
+        </button>
         <div className='col-span-2 row-span-1'>
           <p>{content}</p>
         </div>
@@ -40,7 +37,7 @@ const Comment = ({ content, createdAt, score, user, replies, id, comment }) => {
           {replies?.map((reply) => (
             <Comment key={reply.id} {...reply} />
           ))}
-          <ReplyTextArea hidden={replyTextArea} />
+          {!replyTextArea && <ReplyTextArea />}
         </div>
       </div>
     </>
