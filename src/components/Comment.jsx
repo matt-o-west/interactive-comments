@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Counter from './Counter'
 import { addComment, removeComment, editComment } from '../redux/commentSlice'
+import ReplyTextArea from './ReplyTextArea'
 
 const Comment = ({ content, createdAt, score, user, replies, id, comment }) => {
   const { username } = user
+  const [replyTextArea, setReplyTextArea] = useState(false)
   console.log(score)
+
+  const handleReplyClick = () => {
+    console.log('reply')
+
+    return (
+      <div>
+        <textarea></textarea>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -28,6 +40,7 @@ const Comment = ({ content, createdAt, score, user, replies, id, comment }) => {
           {replies?.map((reply) => (
             <Comment key={reply.id} {...reply} />
           ))}
+          <ReplyTextArea hidden={replyTextArea} />
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { useSelector, useDispatch } from 'react-redux'
-import store from './redux/commentStore'
+import store from './redux/store'
 import Comment from './components/Comment'
 
 const state = store.getState()
