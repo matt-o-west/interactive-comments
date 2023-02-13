@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 const now = new Date()
 
 const initialState = {
-  comments: [
+  comments: JSON.parse(localStorage.getItem('comments')) || [
     {
       id: 1,
       content:

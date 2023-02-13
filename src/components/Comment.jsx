@@ -53,11 +53,11 @@ const Comment = ({ content, createdAt, score, user, replies, id, comment }) => {
         <div className='col-span-2 row-span-1'>
           <p>{content}</p>
         </div>
+        {!replyTextArea && <ReplyTextArea />}
         <div className='w-2/3'>
           {replies?.map((reply) => (
             <Comment key={reply.id} {...reply} />
           ))}
-          {!replyTextArea && <ReplyTextArea />}
         </div>
       </div>
     </>

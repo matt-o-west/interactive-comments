@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 import { useSelector, useDispatch } from 'react-redux'
 import store from './redux/store'
@@ -9,6 +9,12 @@ const state = store.getState()
 function App() {
   //const user = useSelector((state) => state.user)
   const comments = useSelector((state) => state.commentReducer.comments)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    localStorage.setItem('comments', JSON.stringify(comments))
+  }, [comments])
+
   console.log(comments)
 
   return (
