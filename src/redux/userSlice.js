@@ -31,6 +31,6 @@ const slice = {
 const userSlice = createSlice(slice)
 const { actions, reducer } = userSlice
 
-export const avatar = (state) => state.user.image.png
+export const avatar = initialState.user.image.png
 export const { login, logout } = actions
 export default reducer
