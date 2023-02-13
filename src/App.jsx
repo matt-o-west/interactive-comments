@@ -3,6 +3,7 @@ import './App.css'
 import { useSelector, useDispatch } from 'react-redux'
 import store from './redux/store'
 import Comment from './components/Comment'
+import BaseInput from './components/BaseInput'
 
 const state = store.getState()
 
@@ -23,6 +24,7 @@ function App() {
         comments.map((comment) => {
           return <Comment {...comment} key={comment.id} comment={comment} />
         })}
+      <BaseInput />
     </div>
   )
 }

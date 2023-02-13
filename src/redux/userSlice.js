@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   user: {
-    username: '',
+    username: 'ramsesmiron',
     image: {
-      png: '',
-      webp: '',
+      png: './images/avatars/image-ramsesmiron.png',
+      webp: './images/avatars/image-ramsesmiron.webp',
     },
   },
 }
@@ -31,5 +31,6 @@ const slice = {
 const userSlice = createSlice(slice)
 const { actions, reducer } = userSlice
 
+export const avatar = (state) => state.user.image.png
 export const { login, logout } = actions
 export default reducer

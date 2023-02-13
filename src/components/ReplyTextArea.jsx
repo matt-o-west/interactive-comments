@@ -18,6 +18,7 @@ const ReplyTextArea = () => {
 
   return (
     <div>
+      <img src={`src/images/avatars/image-${username}.png`} />
       <form onSubmit={handleReplySubmit}>
         <textarea
           type='textarea'
