@@ -109,7 +109,9 @@ const slice = {
       const comment = comments.find((comment) => comment.id === id)
 
       if (comment) {
-        comments = comments.filter((comment) => comment.id !== id)
+        return {
+          comments: comments.filter((comment) => comment.id !== id),
+        }
       }
     },
     editComment: (state, action) => {
@@ -164,10 +166,12 @@ const slice = {
       }
     },
     decrementScore: (state, action) => {
+      const { user } = action.payload
+
       const comment = state.comments.find(
         (comment) => comment.id === action.payload
       )
-      if (comment) {
+      if (comment && user !== comment.user.username) {
         console.log(state.comments)
         comment.score--
       }

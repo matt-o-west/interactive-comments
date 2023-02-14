@@ -4,6 +4,7 @@ import { addComment, removeComment, editComment } from '../redux/commentSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import ReplyTextArea from './ReplyTextArea'
 import Modal from './Modal'
+import { getRelativeTime } from '../utils/getRelativeTime'
 
 const Comment = ({ content, createdAt, score, replies, id, comment }) => {
   const dispatch = useDispatch()
@@ -41,13 +42,7 @@ const Comment = ({ content, createdAt, score, replies, id, comment }) => {
             alt='avatar image'
           />
           <p>{user}</p>
-          <p>
-            {createdAt.toLocaleString('en-US', {
-              hour: 'numeric',
-              minute: 'numeric',
-              hour12: true,
-            })}
-          </p>
+          <p>{getRelativeTime(createdAt)}</p>
         </div>
         <button className='btn btn-primary' onClick={handleReplyClick}>
           Reply
