@@ -4,7 +4,7 @@ import { incrementScore, decrementScore } from '../redux/commentSlice'
 
 const Counter = ({ score, id, comment }) => {
   const dispatch = useDispatch()
-  console.log(comment)
+  //console.log(comment)
 
   return (
     <div className='w-full bg-slate-400 rounded-md'>

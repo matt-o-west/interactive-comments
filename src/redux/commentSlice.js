@@ -1,7 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { useTransition } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 const now = new Date()
+const date = new Date(now.getTime() - 1000 * 60 * 60 * 24 * 7)
+const localeTime = date.toLocaleTimeString('en-US', {
+  hour: 'numeric',
+  minute: 'numeric',
+  hour12: true,
+})
 
 const initialState = {
   comments: JSON.parse(localStorage.getItem('comments')) || [
@@ -75,22 +82,22 @@ const slice = {
   reducers: {
     addComment: (state = '', action) => {
       const { user, comment } = action.payload
+      const { username } = useTransition
       const { comments } = state
 
       const newComment = {
         id: uuidv4(),
         content: comment,
-        createdAt: now.getTime(),
+        createdAt: localeTime,
         score: 0,
         user: {
           image: {
-            png: `./images/avatars/image-${user}.png`,
-            webp: `./images/avatars/image-${user}.webp`,
+            png: `src/images/avatars/image-${username}.png`,
+            webp: `src/images/avatars/image-${username}.webp`,
           },
-          username: user.username,
+          username: user,
         },
       }
-      localStorage.setItem('comments', JSON.stringify(...comments, newComment))
       return {
         comments: [...comments, newComment],
       }
@@ -98,12 +105,11 @@ const slice = {
     removeComment: (state, action) => {
       const { id } = action.payload
       const { comments } = state
-      localStorage.setItem(
-        'comments',
-        JSON.stringify(comments.filter((comment) => comment.id !== id))
-      )
-      return {
-        comments: comments.filter((comment) => comment.id !== id),
+
+      const comment = comments.find((comment) => comment.id === id)
+
+      if (comment) {
+        comments = comments.filter((comment) => comment.id !== id)
       }
     },
     editComment: (state, action) => {
@@ -127,19 +133,18 @@ const slice = {
             png: `./images/avatars/image-${user}.png`,
             webp: `./images/avatars/image-${user}.webp`,
           },
-          username: user.username,
+          username: user,
         },
       }
     },
     removeReply: (state, action) => {
       const { id } = action.payload
       const { comments } = state
-      localStorage.setItem(
-        'comments',
-        JSON.stringify(comments.filter((comment) => comment.id !== id))
-      )
-      return {
-        comments: comments.filter((comment) => comment.id !== id),
+
+      const comment = comments.find((comment) => comment.id === id)
+
+      if (comment) {
+        comment.replies = comment.replies.filter((reply) => reply.id !== id)
       }
     },
     editReply: (state, action) => {
@@ -166,6 +171,9 @@ const slice = {
         console.log(state.comments)
         comment.score--
       }
+    },
+    resetState: () => {
+      return initialState
     },
   },
 }

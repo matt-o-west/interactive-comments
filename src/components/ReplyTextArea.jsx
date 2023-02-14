@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addReply } from '../redux/commentSlice'
+import { avatar } from '../redux/userSlice'
 
 const ReplyTextArea = () => {
   const [reply, setReply] = useState('')
@@ -18,7 +19,7 @@ const ReplyTextArea = () => {
 
   return (
     <div>
-      <img src={`src/images/avatars/image-${username}.png`} />
+      <img src={`src/${avatar}`} />
       <form onSubmit={handleReplySubmit}>
         <textarea
           type='textarea'
@@ -27,6 +28,9 @@ const ReplyTextArea = () => {
           onChange={handleReplyChange}
           value={reply}
         ></textarea>
+        <button type='submit' value='Submit'>
+          Submit
+        </button>
       </form>
     </div>
   )

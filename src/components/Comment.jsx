@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import Counter from './Counter'
 import { addComment, removeComment, editComment } from '../redux/commentSlice'
+import { useSelector, useDispatch } from 'react-redux'
 import ReplyTextArea from './ReplyTextArea'
 import Modal from './Modal'
 
-const Comment = ({ content, createdAt, score, user, replies, id, comment }) => {
-  const { username } = user
+const Comment = ({ content, createdAt, score, replies, id, comment }) => {
+  const dispatch = useDispatch()
+  const user = useSelector((state) => state.userReducer.user.username)
   const [replyTextArea, setReplyTextArea] = useState(true)
   const [isModalOpen, setModalOpen] = useState(false)
 
@@ -19,7 +21,7 @@ const Comment = ({ content, createdAt, score, user, replies, id, comment }) => {
 
   const handleConfirmDelete = () => {
     setModalOpen(false)
-    onDelete()
+    dispatch(removeComment(id))
   }
 
   const handleReplyClick = () => {
@@ -35,11 +37,17 @@ const Comment = ({ content, createdAt, score, user, replies, id, comment }) => {
         </div>
         <div className='col-span-1 row-span-1'>
           <img
-            src={`src/images/avatars/image-${username}.png`}
+            src={`src/images/avatars/image-${user}.png`}
             alt='avatar image'
           />
-          <p>{username}</p>
-          <p>{createdAt}</p>
+          <p>{user}</p>
+          <p>
+            {createdAt.toLocaleString('en-US', {
+              hour: 'numeric',
+              minute: 'numeric',
+              hour12: true,
+            })}
+          </p>
         </div>
         <button className='btn btn-primary' onClick={handleReplyClick}>
           Reply
