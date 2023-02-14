@@ -21,8 +21,10 @@ const Comment = ({ content, createdAt, score, replies, id, comment }) => {
   }
 
   const handleConfirmDelete = () => {
-    setModalOpen(false)
     dispatch(removeComment(id))
+    setTimeout(() => {
+      setModalOpen(false)
+    }, 300)
   }
 
   const handleReplyClick = () => {
@@ -50,8 +52,8 @@ const Comment = ({ content, createdAt, score, replies, id, comment }) => {
         <button onClick={handleDeleteClick}>Delete</button>
         <Modal
           isOpen={isModalOpen}
-          onCancel={handleCancelDelete}
-          onConfirm={handleConfirmDelete}
+          handleCancelDelete={handleCancelDelete}
+          handleConfirmDelete={handleConfirmDelete}
         />
         <div className='col-span-2 row-span-1'>
           <p>{content}</p>

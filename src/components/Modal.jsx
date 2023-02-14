@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 
-const DeleteCommentModal = ({ isOpen, onCancel, onConfirm }) => {
+const DeleteCommentModal = ({
+  isOpen,
+  handleCancelDelete,
+  handleConfirmDelete,
+}) => {
   if (!isOpen) {
     return null
   }
@@ -9,8 +13,8 @@ const DeleteCommentModal = ({ isOpen, onCancel, onConfirm }) => {
     <div className='modal-overlay'>
       <div className='modal-content'>
         <p>Are you sure you want to delete this comment?</p>
-        <button onClick={onCancel}>Cancel</button>
-        <button onClick={onConfirm}>Confirm</button>
+        <button onClick={handleCancelDelete}>Cancel</button>
+        <button onClick={handleConfirmDelete}>Confirm</button>
       </div>
     </div>
   )
