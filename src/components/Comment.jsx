@@ -6,11 +6,12 @@ import ReplyTextArea from './ReplyTextArea'
 import Modal from './Modal'
 import { getRelativeTime } from '../utils/getRelativeTime'
 
-const Comment = ({ content, createdAt, score, replies, id, comment }) => {
+const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
   const dispatch = useDispatch()
-  const user = useSelector((state) => state.userReducer.user.username)
+  const userImage = useSelector((state) => state.userReducer.user.username)
   const [replyTextArea, setReplyTextArea] = useState(true)
   const [isModalOpen, setModalOpen] = useState(false)
+  const { username } = user
 
   const handleDeleteClick = () => {
     setModalOpen(true)
@@ -40,10 +41,10 @@ const Comment = ({ content, createdAt, score, replies, id, comment }) => {
         </div>
         <div className='col-span-1 row-span-1'>
           <img
-            src={`src/images/avatars/image-${user}.png`}
+            src={`src/images/avatars/image-${username}.png`}
             alt='avatar image'
           />
-          <p>{user}</p>
+          <p>{username}</p>
           <p>{getRelativeTime(createdAt)}</p>
         </div>
         <button className='btn btn-primary' onClick={handleReplyClick}>

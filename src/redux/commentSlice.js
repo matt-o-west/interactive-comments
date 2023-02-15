@@ -81,8 +81,9 @@ const slice = {
   initialState,
   reducers: {
     addComment: (state = '', action) => {
-      const { user, comment } = action.payload
-      const { username } = useTransition
+      console.log('payload', action.payload.user)
+      const { comment, user } = action.payload
+      const { username } = user
       const { comments } = state
 
       const newComment = {
@@ -107,11 +108,9 @@ const slice = {
       const { comments } = state
 
       const comment = comments.find((comment) => comment.id === id)
-
-      if (comment) {
-        return {
-          comments: comments.filter((comment) => comment.id !== id),
-        }
+      console.log('delete comment', state.comments)
+      return {
+        comments: comments.filter((comment) => comment.id !== id),
       }
     },
     editComment: (state, action) => {
