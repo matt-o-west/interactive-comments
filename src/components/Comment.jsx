@@ -12,6 +12,7 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
   const [replyTextArea, setReplyTextArea] = useState(true)
   const [isModalOpen, setModalOpen] = useState(false)
   const { username } = user
+  //console.log(username)
 
   const handleDeleteClick = () => {
     setModalOpen(true)
@@ -33,6 +34,10 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
     setReplyTextArea(!replyTextArea)
   }
 
+  const usernameCheck = () => {
+    return username ? username : userImage
+  }
+
   return (
     <>
       <div className='grid grid-cols-3 grid-rows-2'>
@@ -41,7 +46,7 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
         </div>
         <div className='col-span-1 row-span-1'>
           <img
-            src={`src/images/avatars/image-${username}.png`}
+            src={`src/images/avatars/image-${usernameCheck()}.png`}
             alt='avatar image'
           />
           <p>{username}</p>

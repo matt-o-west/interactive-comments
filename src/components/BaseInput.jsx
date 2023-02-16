@@ -5,23 +5,27 @@ import { avatar } from '../redux/userSlice'
 
 const BaseInput = () => {
   // note to self: access to objects in each slice has to be done via name given to the reducer contained in store.js
-  const user = useSelector((state) => state.userReducer.user)
+  const user = useSelector((state) => state.userReducer)
   const dispatch = useDispatch()
   const [baseInput, setBaseInput] = useState('')
 
-  //console.log(user.image)
+  //console.log(user)
 
   const handleCommentSubmit = (e) => {
     e.preventDefault()
-    console.log('submit', baseInput, user.username)
-    dispatch(addComment(baseInput, user))
+    console.log('submit', baseInput, user.user.username)
+    dispatch(addComment(baseInput, user.user.username))
   }
 
   return (
     <div>
       <form onSubmit={handleCommentSubmit}>
         <img src={`src/${avatar}`} alt='avatar image' />
-        <textarea onChange={(e) => setBaseInput(e.target.value)} />
+        <textarea
+          onChange={(e) => {
+            setBaseInput(e.target.value)
+          }}
+        />
         <button type='submit' value='Submit'>
           Submit
         </button>

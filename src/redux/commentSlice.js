@@ -81,20 +81,19 @@ const slice = {
   initialState,
   reducers: {
     addComment: (state = '', action) => {
-      console.log('payload', action.payload.user)
-      const { comment, user } = action.payload
-      const { username } = user
+      console.log('payload', action.payload)
+      const { baseInput, user } = action.payload
       const { comments } = state
 
       const newComment = {
         id: uuidv4(),
-        content: comment,
+        content: action.payload,
         createdAt: localeTime,
         score: 0,
         user: {
           image: {
-            png: `src/images/avatars/image-${username}.png`,
-            webp: `src/images/avatars/image-${username}.webp`,
+            png: `src/images/avatars/image-${user}.png`,
+            webp: `src/images/avatars/image-${user}.webp`,
           },
           username: user,
         },
