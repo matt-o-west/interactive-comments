@@ -26,7 +26,7 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
     dispatch(removeComment(id))
     setTimeout(() => {
       setModalOpen(false)
-    }, 300)
+    }, 200)
   }
 
   const handleReplyClick = () => {

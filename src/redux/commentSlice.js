@@ -11,7 +11,7 @@ const localeTime = date.toLocaleTimeString('en-US', {
 })
 
 const initialState = {
-  comments: JSON.parse(localStorage.getItem('comments')) || [
+  comments: /*JSON.parse(localStorage.getItem('comments')) ||*/ [
     {
       id: 1,
       content:
@@ -82,7 +82,7 @@ const slice = {
   reducers: {
     addComment: (state = '', action) => {
       console.log('payload', action.payload)
-      const { baseInput, user } = action.payload
+      const { user } = action.payload
       const { comments } = state
 
       const newComment = {
@@ -103,13 +103,14 @@ const slice = {
       }
     },
     removeComment: (state, action) => {
-      const { id } = action.payload
+      //const { id } = action.payload
       const { comments } = state
 
-      const comment = comments.find((comment) => comment.id === id)
-      console.log('delete comment', state.comments)
+      //const comment = comments.find((comment) => comment.id === id)
+      console.log('delete comment', action.payload)
       return {
-        comments: comments.filter((comment) => comment.id !== id),
+        ...state,
+        comments: comments.filter((comment) => comment.id !== action.payload),
       }
     },
     editComment: (state, action) => {
