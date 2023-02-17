@@ -8,11 +8,11 @@ import { getRelativeTime } from '../utils/getRelativeTime'
 
 const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
   const dispatch = useDispatch()
-  const userImage = useSelector((state) => state.userReducer.user.username)
+  const currentUser = useSelector((state) => state.userReducer.user.username)
   const [replyTextArea, setReplyTextArea] = useState(true)
   const [isModalOpen, setModalOpen] = useState(false)
   const { username } = user
-  console.log(username, userImage)
+  console.log(username)
 
   const handleDeleteClick = () => {
     setModalOpen(true)
@@ -36,11 +36,10 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
 
   const handleEditClick = () => {
     console.log('edit')
-    dispatch(editComment(id, 'edited'))
   }
 
   const usernameCheck = () => {
-    return username ? username : userImage
+    return username ? username : currentUser
   }
 
   return (
@@ -60,10 +59,10 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
         <button className='btn btn-primary' onClick={handleReplyClick}>
           Reply
         </button>
-        {username === userImage && (
+        {username === currentUser && (
           <button onClick={handleEditClick}>Edit</button>
         )}
-        {username === userImage && (
+        {username === currentUser && (
           <button onClick={handleDeleteClick}>Delete</button>
         )}
 

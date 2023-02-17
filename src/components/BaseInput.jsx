@@ -5,7 +5,7 @@ import { avatar } from '../redux/userSlice'
 
 const BaseInput = () => {
   // note to self: access to objects in each slice has to be done via name given to the reducer contained in store.js
-  const user = useSelector((state) => state.userReducer)
+  const user = useSelector((state) => state.userReducer.user)
   const dispatch = useDispatch()
   const [baseInput, setBaseInput] = useState('')
 
@@ -13,8 +13,8 @@ const BaseInput = () => {
 
   const handleCommentSubmit = (e) => {
     e.preventDefault()
-    console.log('submit', baseInput, user.user.username)
-    dispatch(addComment(baseInput, user.user.username))
+    console.log('submit', baseInput, user)
+    dispatch(addComment({ input: baseInput, user: user.username }))
   }
 
   return (

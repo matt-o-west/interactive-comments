@@ -82,12 +82,12 @@ const slice = {
   reducers: {
     addComment: (state = '', action) => {
       console.log('payload', action.payload)
-      const { user } = action.payload
+      const { user, input } = action.payload
       const { comments } = state
 
       const newComment = {
         id: uuidv4(),
-        content: action.payload,
+        content: input,
         createdAt: localeTime,
         score: 0,
         user: {
