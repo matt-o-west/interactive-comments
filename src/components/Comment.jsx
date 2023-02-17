@@ -12,7 +12,7 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
   const [replyTextArea, setReplyTextArea] = useState(true)
   const [isModalOpen, setModalOpen] = useState(false)
   const { username } = user
-  //console.log(username)
+  console.log(username, userImage)
 
   const handleDeleteClick = () => {
     setModalOpen(true)
