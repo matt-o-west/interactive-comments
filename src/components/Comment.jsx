@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Counter from './Counter'
-import { addComment, removeComment, editComment } from '../redux/commentSlice'
+import { removeComment, editComment } from '../redux/commentSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import ReplyTextArea from './ReplyTextArea'
 import Modal from './Modal'
@@ -34,6 +34,11 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
     setReplyTextArea(!replyTextArea)
   }
 
+  const handleEditClick = () => {
+    console.log('edit')
+    dispatch(editComment(id, 'edited'))
+  }
+
   const usernameCheck = () => {
     return username ? username : userImage
   }
@@ -55,7 +60,13 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
         <button className='btn btn-primary' onClick={handleReplyClick}>
           Reply
         </button>
-        <button onClick={handleDeleteClick}>Delete</button>
+        {username === userImage && (
+          <button onClick={handleEditClick}>Edit</button>
+        )}
+        {username === userImage && (
+          <button onClick={handleDeleteClick}>Delete</button>
+        )}
+
         <Modal
           isOpen={isModalOpen}
           handleCancelDelete={handleCancelDelete}
