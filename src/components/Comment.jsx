@@ -10,9 +10,10 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
   const dispatch = useDispatch()
   const currentUser = useSelector((state) => state.userReducer.user.username)
   const [replyTextArea, setReplyTextArea] = useState(true)
+  const [editTextArea, setEditTextArea] = useState(false)
   const [isModalOpen, setModalOpen] = useState(false)
   const { username } = user
-  console.log(username)
+  //console.log(username)
 
   const handleDeleteClick = () => {
     setModalOpen(true)
@@ -36,6 +37,7 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
 
   const handleEditClick = () => {
     console.log('edit')
+    dispatch(editComment({ id: id, newComment: replyTextArea }))
   }
 
   const usernameCheck = () => {
@@ -73,6 +75,7 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
         />
         <div className='col-span-2 row-span-1'>
           <p>{content}</p>
+          {editTextArea && <ReplyTextArea />}
         </div>
         {!replyTextArea && <ReplyTextArea />}
         <div className='w-2/3'>

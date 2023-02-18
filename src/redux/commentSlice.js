@@ -113,9 +113,9 @@ const slice = {
     },
     editComment: (state, action) => {
       const { id, newComment } = action.payload
-      const existingComment = state.find((comment) => comment.id === id)
-      if (existingComment) {
-        existingComment.comment = newComment
+      const comment = state.find((comment) => comment.id === id)
+      if (comment) {
+        comment.content = newComment
       }
     },
     addReply: (state, action) => {
