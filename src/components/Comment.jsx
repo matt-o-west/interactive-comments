@@ -39,8 +39,6 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
   const handleEditClick = () => {
     console.log('edit')
     setEditTextArea(!editTextArea)
-    if (editArea) {
-    } // toggle edit text area
   }
 
   const usernameCheck = () => {
