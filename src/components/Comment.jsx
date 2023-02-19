@@ -38,7 +38,9 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
 
   const handleEditClick = () => {
     console.log('edit')
-    setEditTextArea(!editTextArea) // toggle edit text area
+    setEditTextArea(!editTextArea)
+    if (editArea) {
+    } // toggle edit text area
   }
 
   const usernameCheck = () => {
@@ -82,10 +84,7 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
               handleEditClick={handleEditClick}
             />
           ) : (
-            <div>
-              <p>{content}</p>
-              <button onClick={() => setIsEditing(true)}>Edit</button>
-            </div>
+            <p>{content}</p>
           )}
         </div>
         {!replyTextArea && <ReplyTextArea />}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addReply } from '../redux/commentSlice'
 import { avatar } from '../redux/userSlice'
@@ -6,6 +6,11 @@ import { avatar } from '../redux/userSlice'
 const ReplyTextArea = () => {
   const [reply, setReply] = useState('')
   const dispatch = useDispatch()
+  const textareaRef = useRef(null)
+
+  useEffect(() => {
+    textareaRef.current.focus()
+  }, [])
 
   const handleReplyChange = (e) => {
     setReply(e.target.value)
@@ -27,6 +32,7 @@ const ReplyTextArea = () => {
           placeholder='Reply to this comment'
           onChange={handleReplyChange}
           value={reply}
+          ref={textareaRef}
         ></textarea>
         <button type='submit' value='Submit'>
           Submit

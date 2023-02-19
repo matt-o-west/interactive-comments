@@ -117,7 +117,8 @@ const slice = {
       const { id, edit } = action.payload
       const { comments } = state
       console.log(action.payload)
-      const comment = comments.find((comment) => comment.id === action.payload)
+      const comment = comments.find((comment) => comment.id === id)
+      console.log(comments)
       if (comment) {
         comment.content = edit
       }

@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState, useRef, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { editComment } from '../redux/commentSlice'
-import { avatar } from '../redux/userSlice'
 
 const EditTextArea = ({ id, content, handleEditClick }) => {
   const [edit, setEdit] = useState(content)
   const dispatch = useDispatch()
+  const textareaRef = useRef(null)
+
+  useEffect(() => {
+    textareaRef.current.focus()
+  }, [])
 
   const handleEditChange = (e) => {
     setEdit(e.target.value)
@@ -28,6 +32,7 @@ const EditTextArea = ({ id, content, handleEditClick }) => {
           placeholder='Reply to this comment'
           onChange={handleEditChange}
           value={edit}
+          ref={textareaRef}
         ></textarea>
         <button type='submit' value='Submit'>
           Update
