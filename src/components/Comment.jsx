@@ -3,6 +3,7 @@ import Counter from './Counter'
 import { removeComment, editComment } from '../redux/commentSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import ReplyTextArea from './ReplyTextArea'
+import EditTextArea from './EditTextArea'
 import Modal from './Modal'
 import { getRelativeTime } from '../utils/getRelativeTime'
 
@@ -37,7 +38,7 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
 
   const handleEditClick = () => {
     console.log('edit')
-    dispatch(editComment({ id: id, newComment: replyTextArea }))
+    setEditTextArea(!editTextArea) // toggle edit text area
   }
 
   const usernameCheck = () => {
@@ -74,8 +75,18 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
           handleConfirmDelete={handleConfirmDelete}
         />
         <div className='col-span-2 row-span-1'>
-          <p>{content}</p>
-          {editTextArea && <ReplyTextArea />}
+          {editTextArea ? (
+            <EditTextArea
+              id={id}
+              content={content}
+              handleEditClick={handleEditClick}
+            />
+          ) : (
+            <div>
+              <p>{content}</p>
+              <button onClick={() => setIsEditing(true)}>Edit</button>
+            </div>
+          )}
         </div>
         {!replyTextArea && <ReplyTextArea />}
         <div className='w-2/3'>

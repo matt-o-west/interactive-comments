@@ -108,14 +108,18 @@ const slice = {
       console.log('delete comment', action.payload)
       return {
         ...state,
-        comments: comments.filter((comment) => comment.id !== action.payload),
+        comments: comments.filter(
+          (comment) => comment.id !== action.payload.id
+        ),
       }
     },
     editComment: (state, action) => {
-      const { id, newComment } = action.payload
-      const comment = state.find((comment) => comment.id === id)
+      const { id, edit } = action.payload
+      const { comments } = state
+      console.log(action.payload)
+      const comment = comments.find((comment) => comment.id === action.payload)
       if (comment) {
-        comment.content = newComment
+        comment.content = edit
       }
     },
     addReply: (state, action) => {
