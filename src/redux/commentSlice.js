@@ -10,6 +10,21 @@ const localeTime = date.toLocaleTimeString('en-US', {
   hour12: true,
 })
 
+function findCommentById(id, comments) {
+  for (const comment of comments) {
+    if (comment.id === id) {
+      return comment
+    }
+    if (comment.replies) {
+      const foundInReplies = findCommentById(id, comment.replies)
+      if (foundInReplies) {
+        return foundInReplies
+      }
+    }
+  }
+  return null
+}
+
 const initialState = {
   comments: JSON.parse(localStorage.getItem('comments')) || [
     {
@@ -104,23 +119,25 @@ const slice = {
     },
     removeComment: (state, action) => {
       const { comments } = state
-
+      const { id } = action.payload
       console.log('delete comment', action.payload)
+      const commentToDelete = findCommentById(action.payload, comments)
+      console.log(JSON.stringify(commentToDelete))
+
       return {
         ...state,
         comments: comments.filter(
-          (comment) => comment.id !== action.payload.id
+          (comment) => comment.id !== commentToDelete.id
         ),
       }
     },
     editComment: (state, action) => {
       const { id, edit } = action.payload
       const { comments } = state
-      console.log(action.payload)
-      const comment = comments.find((comment) => comment.id === id)
-      console.log(JSON.stringify(state))
-      if (comment) {
-        comment.content = edit
+      const commentToUpdate = findCommentById(id, comments)
+
+      if (commentToUpdate) {
+        commentToUpdate.content = edit
       }
     },
     addReply: (state, action) => {
