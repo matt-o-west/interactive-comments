@@ -16,8 +16,6 @@ function App() {
     localStorage.setItem('comments', JSON.stringify(comments))
   }, [comments])
 
-  console.log(comments)
-
   return (
     <div className='App'>
       {comments &&

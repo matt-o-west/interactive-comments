@@ -8,9 +8,10 @@ const Counter = ({ score, id, comment }) => {
   const [isScoreDisabled, setIsScoreDisabled] = useState(false)
 
   console.log(comment)
+
   useEffect(() => {
     checkHasVoted()
-  }, [])
+  }, [score])
 
   const checkHasVoted = () => {
     if (comment?.hasVoted) {

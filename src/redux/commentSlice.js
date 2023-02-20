@@ -166,25 +166,21 @@ const slice = {
       }
     },
     incrementScore: (state, action) => {
-      const comment = state.comments.find(
-        (comment) => comment.id === action.payload
-      )
-      if (comment) {
+      const { comments } = state
+      const commentToIncrement = findCommentById(action.payload, comments)
+      if (commentToIncrement) {
         console.log(state.comments)
-        comment.score++
-        comment.hasVoted = true // add hasVoted property, disables button in component
+        commentToIncrement.score++
+        commentToIncrement.hasVoted = true // add hasVoted property, disables button in component
       }
     },
     decrementScore: (state, action) => {
-      const { user } = action.payload
-
-      const comment = state.comments.find(
-        (comment) => comment.id === action.payload
-      )
-      if (comment && user !== comment.user.username) {
+      const { comments } = state
+      const commentToDecrement = findCommentById(action.payload, comments)
+      if (commentToDecrement) {
         console.log(state.comments)
-        comment.score--
-        comment.hasVoted = true // add hasVoted property, disables button in component
+        commentToDecrement.score--
+        commentToDecrement.hasVoted = true // add hasVoted property, disables button in component
       }
     },
     resetState: () => {

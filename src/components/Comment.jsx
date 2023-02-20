@@ -88,7 +88,7 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
         {!replyTextArea && <ReplyTextArea />}
         <div className='w-2/3'>
           {replies?.map((reply) => (
-            <Comment key={reply.id} {...reply} />
+            <Comment key={reply.id} {...reply} comment={comment} />
           ))}
         </div>
       </div>
