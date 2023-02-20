@@ -119,16 +119,23 @@ const slice = {
     },
     removeComment: (state, action) => {
       const { comments } = state
-      const { id } = action.payload
-      console.log('delete comment', action.payload)
+      //console.log('delete comment', action.payload) // action payload is id
       const commentToDelete = findCommentById(action.payload, comments)
-      console.log(JSON.stringify(commentToDelete))
+      //console.log(JSON.stringify(commentToDelete))
 
-      return {
-        ...state,
-        comments: comments.filter(
-          (comment) => comment.id !== commentToDelete.id
-        ),
+      if (commentToDelete.replyingTo) {
+        const parentComment = comments.find(
+          (comment) => comment.user.username === commentToDelete.replyingTo
+        )
+        parentComment.replies = parentComment.replies.filter(
+          (reply) => reply.id !== commentToDelete.id
+        )
+      } else {
+        return {
+          comments: comments.filter(
+            (comment) => comment.id !== commentToDelete.id
+          ),
+        }
       }
     },
     editComment: (state, action) => {
