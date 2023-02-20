@@ -188,6 +188,7 @@ const slice = {
       )
       if (comment) {
         console.log(state.comments)
+        comment.hasVoted = true // add hasVoted property, disables button in component
         comment.score++
       }
     },
@@ -199,6 +200,7 @@ const slice = {
       )
       if (comment && user !== comment.user.username) {
         console.log(state.comments)
+        comment.hasVoted = true // add hasVoted property, disables button in component
         comment.score--
       }
     },

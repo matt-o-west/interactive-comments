@@ -12,11 +12,11 @@ const Counter = ({ score, id, comment }) => {
   return (
     <div className='w-full bg-slate-400 rounded-md'>
       <button onClick={() => dispatch(incrementScore(id, user))}>
-        <span className='font-bold text-slate-700'>+</span>
+        <i className='fas fa-arrow-up'></i>
       </button>
       <input type='text' value={score} readOnly />
       <button onClick={() => dispatch(decrementScore(id, user))}>
-        <span className='font-bold text-slate-700'>-</span>
+        <i className='fas fa-arrow-down'></i>
       </button>
     </div>
   )
