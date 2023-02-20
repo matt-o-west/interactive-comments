@@ -165,31 +165,14 @@ const slice = {
         },
       }
     },
-    removeReply: (state, action) => {
-      const { id } = action.payload
-      const { comments } = state
-
-      const comment = comments.find((comment) => comment.id === id)
-
-      if (comment) {
-        comment.replies = comment.replies.filter((reply) => reply.id !== id)
-      }
-    },
-    editReply: (state, action) => {
-      const { id, newComment } = action.payload
-      const existingComment = state.find((comment) => comment.id === id)
-      if (existingComment) {
-        existingComment.comment = newComment
-      }
-    },
     incrementScore: (state, action) => {
       const comment = state.comments.find(
         (comment) => comment.id === action.payload
       )
       if (comment) {
         console.log(state.comments)
-        comment.hasVoted = true // add hasVoted property, disables button in component
         comment.score++
+        comment.hasVoted = true // add hasVoted property, disables button in component
       }
     },
     decrementScore: (state, action) => {
@@ -200,8 +183,8 @@ const slice = {
       )
       if (comment && user !== comment.user.username) {
         console.log(state.comments)
-        comment.hasVoted = true // add hasVoted property, disables button in component
         comment.score--
+        comment.hasVoted = true // add hasVoted property, disables button in component
       }
     },
     resetState: () => {
@@ -217,8 +200,6 @@ export const {
   removeComment,
   editComment,
   addReply,
-  removeReply,
-  editReply,
   incrementScore,
   decrementScore,
 } = actions
