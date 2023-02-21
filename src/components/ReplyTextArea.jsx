@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addReply } from '../redux/commentSlice'
 import { avatar } from '../redux/userSlice'
 
-const ReplyTextArea = () => {
+const ReplyTextArea = ({ comment }) => {
   const [reply, setReply] = useState('')
   const dispatch = useDispatch()
   const textareaRef = useRef(null)
@@ -19,7 +19,7 @@ const ReplyTextArea = () => {
   const handleReplySubmit = (e) => {
     e.preventDefault()
     console.log('submit')
-    dispatch(addReply(reply))
+    dispatch(addReply({ comment, reply }))
   }
 
   return (

@@ -147,22 +147,26 @@ const slice = {
         commentToUpdate.content = edit
       }
     },
-    addReply: (state, action) => {
-      const { id, user, comment } = action.payload
-      const { comments } = state
+    addReply: (action) => {
+      console.log('payload', action.payload)
+      const { comment, reply } = action.payload
+      const { replies } = comment
+
       const newReply = {
         id: uuidv4(),
-        content: comment,
-        createdAt: now.getTime(),
+        content: reply,
+        createdAt: localeTime,
         score: 0,
-        replyingTo: user,
         user: {
           image: {
-            png: `./images/avatars/image-${user}.png`,
-            webp: `./images/avatars/image-${user}.webp`,
+            png: `src/images/avatars/image-${user}.png`,
+            webp: `src/images/avatars/image-${user}.webp`,
           },
           username: user,
         },
+      }
+      return {
+        replies: [...replies, newReply],
       }
     },
     incrementScore: (state, action) => {

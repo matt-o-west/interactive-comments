@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Counter from './Counter'
-import { removeComment, editComment } from '../redux/commentSlice'
+import { removeComment } from '../redux/commentSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import ReplyTextArea from './ReplyTextArea'
 import EditTextArea from './EditTextArea'
@@ -85,7 +85,7 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
             <p>{content}</p>
           )}
         </div>
-        {!replyTextArea && <ReplyTextArea />}
+        {!replyTextArea && <ReplyTextArea comment={comment} />}
         <div className='w-2/3'>
           {replies?.map((reply) => (
             <Comment key={reply.id} {...reply} comment={comment} />
