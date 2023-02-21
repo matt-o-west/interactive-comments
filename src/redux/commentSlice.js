@@ -147,26 +147,36 @@ const slice = {
         commentToUpdate.content = edit
       }
     },
-    addReply: (action) => {
-      console.log('payload', action.payload)
-      const { comment, reply } = action.payload
-      const { replies } = comment
-
-      const newReply = {
-        id: uuidv4(),
-        content: reply,
-        createdAt: localeTime,
-        score: 0,
-        user: {
-          image: {
-            png: `src/images/avatars/image-${user}.png`,
-            webp: `src/images/avatars/image-${user}.webp`,
+    addReply: (state, action) => {
+      const { commentId, reply, user } = action.payload
+      console.log(action.payload)
+      const commentIndex = state.comments.findIndex(
+        (comment) => comment.id === commentId
+      )
+      if (commentIndex !== -1) {
+        const comment = state.comments[commentIndex]
+        const newReply = {
+          id: uuidv4(),
+          content: reply,
+          createdAt: localeTime,
+          score: 0,
+          user: {
+            image: {
+              png: `src/images/avatars/image-${user}.png`,
+              webp: `src/images/avatars/image-${user}.webp`,
+            },
+            username: user,
           },
-          username: user,
-        },
-      }
-      return {
-        replies: [...replies, newReply],
+        }
+        const updatedComment = {
+          ...comment,
+          replies: [...comment.replies, newReply],
+        }
+        return [
+          ...state.slice(0, commentIndex),
+          updatedComment,
+          ...state.slice(commentIndex + 1),
+        ]
       }
     },
     incrementScore: (state, action) => {

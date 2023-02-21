@@ -1,12 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addReply } from '../redux/commentSlice'
 import { avatar } from '../redux/userSlice'
 
 const ReplyTextArea = ({ comment }) => {
   const [reply, setReply] = useState('')
   const dispatch = useDispatch()
+  const user = useSelector((state) => state.userReducer.user.username)
   const textareaRef = useRef(null)
+  console.log(comment)
 
   useEffect(() => {
     textareaRef.current.focus()
@@ -18,8 +20,12 @@ const ReplyTextArea = ({ comment }) => {
 
   const handleReplySubmit = (e) => {
     e.preventDefault()
-    console.log('submit')
-    dispatch(addReply({ comment, reply }))
+    console.log('submit', {
+      comment: comment.replies,
+      reply: reply,
+      user: user,
+    })
+    dispatch(addReply({ id: comment.id, reply: reply, user: user }))
   }
 
   return (
