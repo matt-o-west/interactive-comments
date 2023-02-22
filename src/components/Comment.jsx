@@ -16,11 +16,11 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
   const { username } = user
   console.log(comment)
 
-  const handleDeleteClick = () => {
+  const handleDeleteModalOpen = () => {
     setModalOpen(true)
   }
 
-  const handleCancelDelete = () => {
+  const handleDeleteModalClose = () => {
     setModalOpen(false)
   }
 
@@ -31,12 +31,12 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
     }, 200)
   }
 
-  const handleReplyClick = () => {
+  const toggleReplyTextarea = () => {
     console.log(replyTextArea)
     setReplyTextArea(!replyTextArea)
   }
 
-  const handleEditClick = () => {
+  const toggleEditTextarea = () => {
     console.log('edit')
     setEditTextArea(!editTextArea)
   }
@@ -59,19 +59,19 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
           <p>{username}</p>
           <p>{getRelativeTime(createdAt)}</p>
         </div>
-        <button className='btn btn-primary' onClick={handleReplyClick}>
+        <button className='btn btn-primary' onClick={toggleReplyTextarea}>
           Reply
         </button>
         {username === currentUser && (
-          <button onClick={handleEditClick}>Edit</button>
+          <button onClick={toggleEditTextarea}>Edit</button>
         )}
         {username === currentUser && (
-          <button onClick={handleDeleteClick}>Delete</button>
+          <button onClick={handleDeleteModalOpen}>Delete</button>
         )}
 
         <Modal
           isOpen={isModalOpen}
-          handleCancelDelete={handleCancelDelete}
+          handleCancelDelete={handleDeleteModalClose}
           handleConfirmDelete={handleConfirmDelete}
         />
         <div className='col-span-2 row-span-1'>
@@ -79,7 +79,7 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
             <EditTextArea
               id={id}
               content={content}
-              handleEditClick={handleEditClick}
+              handleEditClick={toggleEditTextarea}
             />
           ) : (
             <p>{content}</p>

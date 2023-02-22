@@ -172,13 +172,24 @@ const slice = {
       }
     },
     removeReply: (state, action) => {
-      const { id, replyId } = action.payload
       const { comments } = state
-      const commentToReplyTo = findCommentById(id, comments)
-      if (commentToReplyTo) {
-        commentToReplyTo.replies = commentToReplyTo.replies.filter(
-          (reply) => reply.id !== replyId
+      //console.log('delete comment', action.payload) // action payload is id
+      const commentToDelete = findCommentById(action.payload, comments)
+      //console.log(JSON.stringify(commentToDelete))
+
+      if (commentToDelete.replyingTo) {
+        const parentComment = comments.find(
+          (comment) => comment.user.username === commentToDelete.replyingTo
         )
+        parentComment.replies = parentComment.replies.filter(
+          (reply) => reply.id !== commentToDelete.id
+        )
+      } else {
+        return {
+          comments: comments.filter(
+            (comment) => comment.id !== commentToDelete.id
+          ),
+        }
       }
     },
     incrementScore: (state, action) => {
