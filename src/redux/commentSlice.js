@@ -149,7 +149,7 @@ const slice = {
     },
     addReply: (state, action) => {
       console.log('payload', action.payload)
-      const { replies, reply, user } = action.payload
+      const { id, reply, user } = action.payload
 
       const newReply = {
         id: uuidv4(),
@@ -166,9 +166,19 @@ const slice = {
       }
 
       const { comments } = state
-      const commentToReplyTo = findCommentById(action.payload.id, comments)
+      const commentToReplyTo = findCommentById(id, comments)
       if (commentToReplyTo) {
         commentToReplyTo.replies.push(newReply)
+      }
+    },
+    removeReply: (state, action) => {
+      const { id, replyId } = action.payload
+      const { comments } = state
+      const commentToReplyTo = findCommentById(id, comments)
+      if (commentToReplyTo) {
+        commentToReplyTo.replies = commentToReplyTo.replies.filter(
+          (reply) => reply.id !== replyId
+        )
       }
     },
     incrementScore: (state, action) => {
@@ -202,6 +212,7 @@ export const {
   removeComment,
   editComment,
   addReply,
+  removeReply,
   incrementScore,
   decrementScore,
 } = actions
