@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { addComment } from '../redux/commentSlice'
+import { addComment, resetState } from '../redux/commentSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { avatar } from '../redux/userSlice'
 
@@ -30,6 +30,9 @@ const BaseInput = () => {
           Submit
         </button>
       </form>
+      <button type='button' onClick={() => dispatch(resetState())}>
+        Reset
+      </button>
     </div>
   )
 }

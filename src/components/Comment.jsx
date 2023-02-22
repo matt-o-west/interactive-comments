@@ -7,7 +7,16 @@ import EditTextArea from './EditTextArea'
 import Modal from './Modal'
 import { getRelativeTime } from '../utils/getRelativeTime'
 
-const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
+const Comment = ({
+  content,
+  createdAt,
+  score,
+  replies,
+  id,
+  comment,
+  user,
+  replyingTo,
+}) => {
   const dispatch = useDispatch()
   const currentUser = useSelector((state) => state.userReducer.user.username)
   const [replyTextArea, setReplyTextArea] = useState(true)
@@ -25,7 +34,7 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
   }
 
   const handleConfirmDelete = () => {
-    dispatch(removeComment(id))
+    dispatch(removeComment({ id, isReply: replyingTo ? true : false }))
     setTimeout(() => {
       setModalOpen(false)
     }, 200)
