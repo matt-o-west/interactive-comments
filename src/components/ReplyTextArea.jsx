@@ -21,11 +21,11 @@ const ReplyTextArea = ({ comment }) => {
   const handleReplySubmit = (e) => {
     e.preventDefault()
     console.log('submit', {
-      comment: comment.replies,
+      comment: comment.replies ? comment.replies : comment,
       reply: reply,
       user: user,
     })
-    dispatch(addReply({ id: comment.id, reply: reply, user: user }))
+    dispatch(addReply({ reply: reply, user: user }))
   }
 
   return (

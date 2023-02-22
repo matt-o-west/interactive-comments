@@ -14,7 +14,7 @@ const Comment = ({ content, createdAt, score, replies, id, comment, user }) => {
   const [editTextArea, setEditTextArea] = useState(false)
   const [isModalOpen, setModalOpen] = useState(false)
   const { username } = user
-  //console.log(username)
+  console.log(comment)
 
   const handleDeleteClick = () => {
     setModalOpen(true)

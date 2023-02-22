@@ -148,35 +148,27 @@ const slice = {
       }
     },
     addReply: (state, action) => {
-      const { commentId, reply, user } = action.payload
-      console.log(action.payload)
-      const commentIndex = state.comments.findIndex(
-        (comment) => comment.id === commentId
-      )
-      if (commentIndex !== -1) {
-        const comment = state.comments[commentIndex]
-        const newReply = {
-          id: uuidv4(),
-          content: reply,
-          createdAt: localeTime,
-          score: 0,
-          user: {
-            image: {
-              png: `src/images/avatars/image-${user}.png`,
-              webp: `src/images/avatars/image-${user}.webp`,
-            },
-            username: user,
+      console.log('payload', action.payload)
+      const { reply, user } = action.payload
+
+      const newReply = {
+        id: uuidv4(),
+        content: reply,
+        createdAt: localeTime,
+        score: 0,
+        user: {
+          image: {
+            png: `src/images/avatars/image-${user}.png`,
+            webp: `src/images/avatars/image-${user}.webp`,
           },
-        }
-        const updatedComment = {
-          ...comment,
-          replies: [...comment.replies, newReply],
-        }
-        return [
-          ...state.slice(0, commentIndex),
-          updatedComment,
-          ...state.slice(commentIndex + 1),
-        ]
+          username: user,
+        },
+      }
+
+      const { comments } = state
+      const commentToReplyTo = findCommentById(action.payload.id, comments)
+      if (commentToReplyTo) {
+        commentToReplyTo.replies.push(newReply)
       }
     },
     incrementScore: (state, action) => {

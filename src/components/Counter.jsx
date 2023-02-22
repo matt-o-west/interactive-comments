@@ -7,7 +7,7 @@ const Counter = ({ score, id, comment }) => {
   const user = useSelector((state) => state.userReducer.user.username)
   const [isScoreDisabled, setIsScoreDisabled] = useState(false)
 
-  console.log(comment)
+  //console.log(comment)
 
   useEffect(() => {
     checkHasVoted()
