@@ -149,7 +149,7 @@ const slice = {
     },
     addReply: (state, action) => {
       console.log('payload', action.payload)
-      const { reply, user } = action.payload
+      const { replies, reply, user } = action.payload
 
       const newReply = {
         id: uuidv4(),

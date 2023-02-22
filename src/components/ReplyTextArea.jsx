@@ -8,7 +8,7 @@ const ReplyTextArea = ({ comment }) => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.userReducer.user.username)
   const textareaRef = useRef(null)
-  console.log(comment)
+  //console.log(comment)
 
   useEffect(() => {
     textareaRef.current.focus()
@@ -21,11 +21,12 @@ const ReplyTextArea = ({ comment }) => {
   const handleReplySubmit = (e) => {
     e.preventDefault()
     console.log('submit', {
-      comment: comment.replies ? comment.replies : comment,
+      comment: comment.replies ? comment.replies : comment, // if comment has replies, use the replies array, otherwise use the comment object
       reply: reply,
       user: user,
     })
-    dispatch(addReply({ reply: reply, user: user }))
+    const replies = comment.replies ? comment.replies : comment
+    dispatch(addReply({ replies: replies, reply: reply, user: user }))
   }
 
   return (
