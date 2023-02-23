@@ -106,6 +106,7 @@ const slice = {
           },
           username: user,
         },
+        hasVoted: false,
       }
 
       const { comments } = state
@@ -127,7 +128,7 @@ const slice = {
     incrementScore: (state, action) => {
       const { comments } = state
       const commentToIncrement = findCommentById(action.payload, comments)
-      if (commentToIncrement) {
+      if (commentToIncrement && !commentToIncrement.hasVoted) {
         console.log(state.comments)
         commentToIncrement.score++
         commentToIncrement.hasVoted = true // add hasVoted property, disables button in component
@@ -136,7 +137,7 @@ const slice = {
     decrementScore: (state, action) => {
       const { comments } = state
       const commentToDecrement = findCommentById(action.payload, comments)
-      if (commentToDecrement) {
+      if (commentToDecrement && !commentToDecrement.hasVoted) {
         console.log(state.comments)
         commentToDecrement.score--
         commentToDecrement.hasVoted = true // add hasVoted property, disables button in component

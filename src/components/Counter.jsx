@@ -11,7 +11,7 @@ const Counter = ({ score, id, comment }) => {
 
   useEffect(() => {
     checkHasVoted()
-  }, [score])
+  }, [score, comment.hasVoted])
 
   const checkHasVoted = () => {
     if (comment?.hasVoted) {
