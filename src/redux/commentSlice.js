@@ -40,7 +40,7 @@ const slice = {
       const { comments } = state
 
       const newComment = {
-        id: uuidv4(),
+        id: state.comments.length + 1,
         content: input,
         createdAt: localeTime,
         score: 0,
@@ -52,9 +52,7 @@ const slice = {
           username: user,
         },
       }
-      return {
-        comments: [...comments, newComment],
-      }
+      comments.push(newComment)
     },
     removeComment: (state, action) => {
       const { comments } = state
@@ -93,9 +91,11 @@ const slice = {
     addReply: (state, action) => {
       console.log('payload', action.payload)
       const { id, reply, user } = action.payload
+      const { comments } = state
+      const commentToReplyTo = findCommentById(id, comments)
 
       const newReply = {
-        id: uuidv4(),
+        id: commentToReplyTo.id + ' reply ' + uuidv4().toString(),
         content: reply,
         createdAt: localeTime,
         score: 0,
@@ -106,11 +106,8 @@ const slice = {
           },
           username: user,
         },
-        hasVoted: false,
       }
 
-      const { comments } = state
-      const commentToReplyTo = findCommentById(id, comments)
       if (commentToReplyTo) {
         commentToReplyTo.replies.push(newReply)
       }
@@ -129,9 +126,16 @@ const slice = {
       const { comments } = state
       const commentToIncrement = findCommentById(action.payload, comments)
       if (commentToIncrement && !commentToIncrement.hasVoted) {
-        console.log(state.comments)
-        commentToIncrement.score++
-        commentToIncrement.hasVoted = true // add hasVoted property, disables button in component
+        const isReply = /^reply-\d+$/.test(action.payload)
+        if (isReply) {
+          console.log(state.comments)
+          commentToIncrement.score++
+          commentToIncrement.hasVoted = true // add hasVoted property, disables button in component
+        } else if (!isReply) {
+          console.log(state.comments)
+          commentToIncrement.score++
+          commentToIncrement.hasVoted = true // add hasVoted property, disables button in component
+        }
       }
     },
     decrementScore: (state, action) => {
