@@ -14,10 +14,10 @@ const Counter = ({
 
   useEffect(() => {
     checkHasVoted()
-  }, [score, comment.hasVoted])
+  }, [score, isScoreDisabled, setIsScoreDisabled, user]) || [comment?.hasVoted]
 
   const checkHasVoted = () => {
-    if (comment?.hasVoted) {
+    if (comment?.hasVoted || isScoreDisabled) {
       setIsScoreDisabled(true)
     }
   }
