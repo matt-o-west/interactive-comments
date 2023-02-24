@@ -22,6 +22,7 @@ const Comment = ({
   const [replyTextArea, setReplyTextArea] = useState(true)
   const [editTextArea, setEditTextArea] = useState(false)
   const [isModalOpen, setModalOpen] = useState(false)
+  const [isScoreDisabled, setIsScoreDisabled] = useState(false)
   const { username } = user
   console.log(comment)
 
@@ -58,7 +59,13 @@ const Comment = ({
     <>
       <div className='grid grid-cols-3 grid-rows-2'>
         <div className='col-span-1 row-span-2'>
-          <Counter score={score} id={id} comment={comment}></Counter>
+          <Counter
+            score={score}
+            id={id}
+            comment={comment}
+            isScoreDisabled={isScoreDisabled}
+            setIsScoreDisabled={setIsScoreDisabled}
+          ></Counter>
         </div>
         <div className='col-span-1 row-span-1'>
           <img

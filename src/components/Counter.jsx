@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { incrementScore, decrementScore } from '../redux/commentSlice'
 
-const Counter = ({ score, id, comment }) => {
+const Counter = ({
+  score,
+  id,
+  comment,
+  isScoreDisabled,
+  setIsScoreDisabled,
+}) => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.userReducer.user.username)
-  const [isScoreDisabled, setIsScoreDisabled] = useState(false)
-
-  //console.log(comment)
 
   useEffect(() => {
     checkHasVoted()
