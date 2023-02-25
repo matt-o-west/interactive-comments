@@ -13,14 +13,26 @@ module.exports = {
         'dark.blue': '#334253',
         'pale.red': '#FFB8BB',
         'soft.red': '#ED6368',
+        white: '#FFFFFF',
       },
       fontFamily: {
         sans: ['Rubik', 'sans-serif'],
       },
       userBadge: (theme) => ({
         default: {
-          backgroundColor: theme('colors.gray.200'),
-          color: theme('colors.gray.800'),
+          backgroundColor: theme('moderate.blue'),
+          color: theme('white'),
+          fontWeight: 500,
+        },
+      }),
+      submitButton: (theme) => ({
+        default: {
+          backgroundColor: theme('moderate.blue'),
+          color: theme('white'),
+          fontWeight: 500,
+          '&:hover': {
+            backgroundColor: theme('light.grayish.blue'),
+          },
         },
       }),
     },

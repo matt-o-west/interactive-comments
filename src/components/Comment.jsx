@@ -57,7 +57,7 @@ const Comment = ({
 
   return (
     <>
-      <div className='grid grid-cols-3 grid-rows-2'>
+      <div className='grid grid-cols-4 grid-rows-2'>
         <div className='col-span-1 row-span-2'>
           <Counter
             score={score}
@@ -76,7 +76,7 @@ const Comment = ({
           {username === currentUser && <i>me</i>}
           <p>{getRelativeTime(createdAt)}</p>
         </div>
-        <button className='btn btn-primary' onClick={toggleReplyTextarea}>
+        <button className='submitButton' onClick={toggleReplyTextarea}>
           Reply
         </button>
         {username === currentUser && (
