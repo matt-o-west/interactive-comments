@@ -90,7 +90,7 @@ const slice = {
     },
     addReply: (state, action) => {
       console.log('payload', action.payload)
-      const { id, reply, user } = action.payload
+      const { id, reply, user, replyingTo } = action.payload
       const { comments } = state
       const commentToReplyTo = findCommentById(id, comments)
 

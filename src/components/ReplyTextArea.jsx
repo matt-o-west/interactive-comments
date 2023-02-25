@@ -4,7 +4,7 @@ import { addReply } from '../redux/commentSlice'
 import { avatar } from '../redux/userSlice'
 
 const ReplyTextArea = ({ comment, replyTo }) => {
-  const [reply, setReply] = useState('')
+  const [reply, setReply] = useState(`<span>@${replyTo} </span>`)
   const dispatch = useDispatch()
   const user = useSelector((state) => state.userReducer.user.username)
   const textareaRef = useRef(null)
@@ -16,7 +16,10 @@ const ReplyTextArea = ({ comment, replyTo }) => {
   }, [])
 
   const handleReplyChange = (e) => {
-    setReply(e.target.value)
+    const value = e.target.value
+    setReply(
+      value.replace(`@${replyTo}`, `<span class="reply-tag">@${replyTo}</span>`)
+    )
   }
 
   const handleReplySubmit = (e) => {
@@ -27,7 +30,14 @@ const ReplyTextArea = ({ comment, replyTo }) => {
       user: user,
     })
 
-    dispatch(addReply({ id: comment.id, reply: reply, user: user }))
+    dispatch(
+      addReply({
+        id: comment.id,
+        reply: reply,
+        user: user,
+        replyingTo: replyTo,
+      })
+    )
   }
 
   return (
