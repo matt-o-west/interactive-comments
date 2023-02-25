@@ -9,7 +9,7 @@ module.exports = {
         'dark.gray': '#333333',
         'grayish.blue': '#67727E',
         'light.grayish.blue': '#C5C6EF',
-        'moderate.blue': '#2F80ED',
+        'moderate.blue': '#5357B6',
         'dark.blue': '#334253',
         'pale.red': '#FFB8BB',
         'soft.red': '#ED6368',
@@ -33,6 +33,7 @@ module.exports = {
           '&:hover': {
             backgroundColor: theme('light.grayish.blue'),
           },
+          cursor: 'pointer',
         },
       }),
     },

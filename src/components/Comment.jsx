@@ -57,7 +57,7 @@ const Comment = ({
 
   return (
     <>
-      <div className='grid grid-cols-4 grid-rows-2'>
+      <div className='grid grid-cols-6 grid-rows-2 place-items-center'>
         <div className='col-span-1 row-span-2'>
           <Counter
             score={score}
@@ -67,31 +67,36 @@ const Comment = ({
             setIsScoreDisabled={setIsScoreDisabled}
           ></Counter>
         </div>
-        <div className='col-span-1 row-span-1'>
+        <div className='col-span-3 row-span-1 w-full items-center'>
           <img
             src={`src/images/avatars/image-${usernameCheck()}.png`}
             alt='avatar image'
+            className='px-5'
           />
-          <p>{username}</p>
+          <p className='w-1/4'>{username}</p>
           {username === currentUser && <i>me</i>}
           <p>{getRelativeTime(createdAt)}</p>
         </div>
-        <button className='submitButton' onClick={toggleReplyTextarea}>
+
+        {username === currentUser && (
+          <button onClick={toggleEditTextarea} className='submitButton'>
+            Edit
+          </button>
+        )}
+        {username === currentUser && (
+          <button onClick={handleDeleteModalOpen} className='submitButton'>
+            Delete
+          </button>
+        )}
+        <button className='btn-primary @apply' onClick={toggleReplyTextarea}>
           Reply
         </button>
-        {username === currentUser && (
-          <button onClick={toggleEditTextarea}>Edit</button>
-        )}
-        {username === currentUser && (
-          <button onClick={handleDeleteModalOpen}>Delete</button>
-        )}
-
         <Modal
           isOpen={isModalOpen}
           handleCancelDelete={handleDeleteModalClose}
           handleConfirmDelete={handleConfirmDelete}
         />
-        <div className='col-span-2 row-span-1'>
+        <div className='col-span-4 row-span-1'>
           {editTextArea ? (
             <EditTextArea
               id={id}
@@ -105,11 +110,11 @@ const Comment = ({
         {!replyTextArea && (
           <ReplyTextArea comment={comment} replyTo={replyingTo} />
         )}
-        <div className='w-2/3'>
-          {replies?.map((reply) => (
-            <Comment key={reply.id} {...reply} comment={comment} />
-          ))}
-        </div>
+      </div>
+      <div className='w-2/3'>
+        {replies?.map((reply) => (
+          <Comment key={reply.id} {...reply} comment={comment} />
+        ))}
       </div>
     </>
   )

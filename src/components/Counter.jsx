@@ -33,13 +33,13 @@ const Counter = ({
   }
 
   return (
-    <div className='w-full bg-slate-400 rounded-md'>
+    <div className='h-full flex flex-col justify-center items-center'>
       <button onClick={handleUpvoteClick} disabled={isScoreDisabled}>
-        <i className='fas fa-arrow-up'></i>
+        <img src='src/images/icon-plus.svg' alt='upvote' />
       </button>
-      <input type='text' value={score} readOnly />
+      <input type='text' value={score} className='text-center h-2/3' readOnly />
       <button onClick={handleDownvoteClick} disabled={isScoreDisabled}>
-        <i className='fas fa-arrow-down'></i>
+        <img src='src/images/icon-minus.svg' alt='downvote' />
       </button>
     </div>
   )
