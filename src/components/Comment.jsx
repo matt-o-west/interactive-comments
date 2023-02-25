@@ -24,7 +24,7 @@ const Comment = ({
   const [isModalOpen, setModalOpen] = useState(false)
   const [isScoreDisabled, setIsScoreDisabled] = useState(false)
   const { username } = user
-  console.log(comment)
+  console.log(replyingTo)
 
   const handleDeleteModalOpen = () => {
     setModalOpen(true)
@@ -73,6 +73,7 @@ const Comment = ({
             alt='avatar image'
           />
           <p>{username}</p>
+          {username === currentUser && <i>me</i>}
           <p>{getRelativeTime(createdAt)}</p>
         </div>
         <button className='btn btn-primary' onClick={toggleReplyTextarea}>
@@ -101,7 +102,9 @@ const Comment = ({
             <p>{content}</p>
           )}
         </div>
-        {!replyTextArea && <ReplyTextArea comment={comment} />}
+        {!replyTextArea && (
+          <ReplyTextArea comment={comment} replyTo={replyingTo} />
+        )}
         <div className='w-2/3'>
           {replies?.map((reply) => (
             <Comment key={reply.id} {...reply} comment={comment} />

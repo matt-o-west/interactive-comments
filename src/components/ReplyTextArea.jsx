@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addReply } from '../redux/commentSlice'
 import { avatar } from '../redux/userSlice'
 
-const ReplyTextArea = ({ comment }) => {
+const ReplyTextArea = ({ comment, replyTo }) => {
   const [reply, setReply] = useState('')
   const dispatch = useDispatch()
   const user = useSelector((state) => state.userReducer.user.username)

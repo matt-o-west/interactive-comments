@@ -22,19 +22,23 @@ const Counter = ({
     }
   }
 
+  const handleUpvoteClick = () => {
+    dispatch(incrementScore(id, user))
+    setIsScoreDisabled(true)
+  }
+
+  const handleDownvoteClick = () => {
+    dispatch(decrementScore(id, user))
+    setIsScoreDisabled(true)
+  }
+
   return (
     <div className='w-full bg-slate-400 rounded-md'>
-      <button
-        onClick={() => dispatch(incrementScore(id, user))}
-        disabled={isScoreDisabled}
-      >
+      <button onClick={handleUpvoteClick} disabled={isScoreDisabled}>
         <i className='fas fa-arrow-up'></i>
       </button>
       <input type='text' value={score} readOnly />
-      <button
-        onClick={() => dispatch(decrementScore(id, user))}
-        disabled={isScoreDisabled}
-      >
+      <button onClick={handleDownvoteClick} disabled={isScoreDisabled}>
         <i className='fas fa-arrow-down'></i>
       </button>
     </div>

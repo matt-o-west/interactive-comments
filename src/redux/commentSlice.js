@@ -106,6 +106,7 @@ const slice = {
           },
           username: user,
         },
+        replyingTo: commentToReplyTo.user.username,
       }
 
       if (commentToReplyTo) {
@@ -141,7 +142,7 @@ const slice = {
     decrementScore: (state, action) => {
       const { comments } = state
       const commentToDecrement = findCommentById(action.payload, comments)
-      if (commentToDecrement && !commentToDecrement.hasVoted) {
+      if (commentToDecrement) {
         console.log(state.comments)
         commentToDecrement.score--
         commentToDecrement.hasVoted = true // add hasVoted property, disables button in component
