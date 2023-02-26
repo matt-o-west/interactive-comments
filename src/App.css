@@ -8,8 +8,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
     background-color: 'very.light.gray';
+    margin-top: 2rem;
   }
 }
 
@@ -20,5 +20,24 @@
 
   .btn-secondary {
     @apply bg-gray-500 text-white font-bold py-2 px-4 rounded cursor-pointer hover:bg-light.gray;
+  }
+
+  .delete-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.1rem;
+    background-color: transparent;
+    color: #ed6368;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+
+  .delete-btn:hover {
+    color: #ffb8bb;
   }
 }

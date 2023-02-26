@@ -26,11 +26,15 @@ const BaseInput = () => {
             setBaseInput(e.target.value)
           }}
         />
-        <button type='submit' value='Submit'>
+        <button type='submit' value='Submit' className='btn-primary @apply'>
           Submit
         </button>
       </form>
-      <button type='button' onClick={() => dispatch(resetState())}>
+      <button
+        type='button'
+        onClick={() => dispatch(resetState())}
+        className='btn-primary @apply'
+      >
         Reset
       </button>
     </div>

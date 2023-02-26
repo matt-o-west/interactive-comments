@@ -57,7 +57,7 @@ const Comment = ({
 
   return (
     <>
-      <div className='grid grid-cols-6 grid-rows-2 place-items-center desktop:max-w-5xl phone:max-w-sm'>
+      <div className='grid grid-cols-7 grid-rows-2 place-items-center my-8 desktop:max-w-5xl tablet:max-w-4xl phone:max-w-md'>
         <div className='col-span-1 row-span-2'>
           <Counter
             score={score}
@@ -67,7 +67,7 @@ const Comment = ({
             setIsScoreDisabled={setIsScoreDisabled}
           ></Counter>
         </div>
-        <div className='flex flex-row col-span-3 row-span-1 w-full items-center'>
+        <div className='flex flex-row col-span-4 row-span-1 w-full items-center'>
           <img
             src={`src/images/avatars/image-${usernameCheck()}.png`}
             alt='avatar image'
@@ -77,28 +77,41 @@ const Comment = ({
           {username === currentUser && <i>me</i>}
           <p>{getRelativeTime(createdAt)}</p>
         </div>
+        <div className='col-span-2'>
+          {username === currentUser && (
+            <button onClick={toggleEditTextarea} className='editButton'>
+              Edit
+            </button>
+          )}
+          {username === currentUser && (
+            <button
+              onClick={handleDeleteModalOpen}
+              className='delete-btn hover:text-pale.red'
+            >
+              <img
+                src='src/images/icon-delete.svg'
+                alt='delete icon'
+                className='fill-current'
+              />
+              <span className='pl-3'>Delete</span>
+            </button>
+          )}
 
-        {username === currentUser && (
-          <button onClick={toggleEditTextarea} className='submitButton'>
-            Edit
-          </button>
-        )}
-        {username === currentUser && (
-          <button onClick={handleDeleteModalOpen} className='submitButton'>
-            Delete
-          </button>
-        )}
-        {username !== currentUser && (
-          <button className='btn-primary @apply' onClick={toggleReplyTextarea}>
-            Reply
-          </button>
-        )}
+          {username !== currentUser && (
+            <button
+              className='btn-primary @apply'
+              onClick={toggleReplyTextarea}
+            >
+              Reply
+            </button>
+          )}
+        </div>
         <Modal
           isOpen={isModalOpen}
           handleCancelDelete={handleDeleteModalClose}
           handleConfirmDelete={handleConfirmDelete}
         />
-        <div className='col-span-4 row-span-1'>
+        <div className='col-span-6 row-span-1'>
           {editTextArea ? (
             <EditTextArea
               id={id}

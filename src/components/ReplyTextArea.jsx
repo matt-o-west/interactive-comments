@@ -52,7 +52,7 @@ const ReplyTextArea = ({ comment, replyTo }) => {
           value={reply}
           ref={textareaRef}
         ></textarea>
-        <button type='submit' value='Submit'>
+        <button type='submit' value='Submit' className='btn-primary @apply'>
           Submit
         </button>
       </form>
