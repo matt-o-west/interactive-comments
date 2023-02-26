@@ -39,7 +39,7 @@ const Counter = ({
   }
 
   return (
-    <div className='h-full ml-6 w-14 rounded-lg flex flex-col justify-center items-center py-3 bg-dark.gray relative z-10'>
+    <div className='h-full ml-6 w-14 rounded-lg flex flex-col justify-center items-center py-2 bg-light.gray relative z-10'>
       <button
         onClick={(e) => console.log('Clicked', e)}
         disabled={isScoreDisabled}
@@ -50,7 +50,7 @@ const Counter = ({
       <input
         type='text'
         value={score}
-        className='text-center w-2/5 bg-dark.gray'
+        className='text-center text-moderate.blue font-medium w-2/5 bg-light.gray mr-0.5 mt-1.5 mb-0.5 ml-0.5'
         readOnly
       />
       <button

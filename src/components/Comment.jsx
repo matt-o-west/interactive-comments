@@ -73,14 +73,23 @@ const Comment = ({
             alt='avatar image'
             className='px-5'
           />
-          <p className='w-1/4'>{username}</p>
-          {username === currentUser && <i>me</i>}
-          <p>{getRelativeTime(createdAt)}</p>
-        </div>
-        <div className='col-span-2'>
+          <p className='w-1/5 font-medium'>{username}</p>
           {username === currentUser && (
-            <button onClick={toggleEditTextarea} className='editButton'>
-              Edit
+            <span className='bg-moderate.blue text-white font-medium p-0.5 px-2 rounded-sm mr-8'>
+              me
+            </span>
+          )}
+          <p className='font-light'>{getRelativeTime(createdAt)}</p>
+        </div>
+        <div className='col-span-2 flex'>
+          {username === currentUser && (
+            <button onClick={toggleEditTextarea} className='edit-btn'>
+              <img
+                src='src/images/icon-reply.svg'
+                alt='reply icon'
+                className='fill-current'
+              />
+              <span className='pl-3'>Edit</span>
             </button>
           )}
           {username === currentUser && (
@@ -126,7 +135,7 @@ const Comment = ({
       {!replyTextArea && (
         <ReplyTextArea comment={comment} replyTo={replyingTo} />
       )}
-      <div className='w-4/5'>
+      <div className='w-1/2 ml-16'>
         {replies?.map((reply) => (
           <Comment key={reply.id} {...reply} comment={comment} />
         ))}
