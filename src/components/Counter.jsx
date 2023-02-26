@@ -14,31 +14,50 @@ const Counter = ({
 
   useEffect(() => {
     checkHasVoted()
-  }, [score, isScoreDisabled, setIsScoreDisabled, user]) || [comment?.hasVoted]
+  }, [comment?.hasVoted, isScoreDisabled])
+
+  console.log('isScoreDisabled', isScoreDisabled)
 
   const checkHasVoted = () => {
-    if (comment?.hasVoted || isScoreDisabled) {
+    if (!comment?.hasVoted) {
+      setIsScoreDisabled(false)
+    } else {
       setIsScoreDisabled(true)
     }
   }
 
   const handleUpvoteClick = () => {
+    console.log('Upvote')
     dispatch(incrementScore(id, user))
     setIsScoreDisabled(true)
   }
 
   const handleDownvoteClick = () => {
+    console.log('Downvote')
     dispatch(decrementScore(id, user))
     setIsScoreDisabled(true)
   }
 
   return (
-    <div className='h-full flex flex-col justify-center items-center'>
-      <button onClick={handleUpvoteClick} disabled={isScoreDisabled}>
+    <div className='h-full ml-6 w-14 rounded-lg flex flex-col justify-center items-center py-3 bg-dark.gray relative z-10'>
+      <button
+        onClick={(e) => console.log('Clicked', e)}
+        disabled={isScoreDisabled}
+        className='p-3 py-2 relative z-10'
+      >
         <img src='src/images/icon-plus.svg' alt='upvote' />
       </button>
-      <input type='text' value={score} className='text-center h-2/3' readOnly />
-      <button onClick={handleDownvoteClick} disabled={isScoreDisabled}>
+      <input
+        type='text'
+        value={score}
+        className='text-center w-2/5 bg-dark.gray'
+        readOnly
+      />
+      <button
+        onClick={(e) => console.log('Clicked', e)}
+        disabled={isScoreDisabled}
+        className='p-3'
+      >
         <img src='src/images/icon-minus.svg' alt='downvote' />
       </button>
     </div>

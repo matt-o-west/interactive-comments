@@ -57,7 +57,7 @@ const Comment = ({
 
   return (
     <>
-      <div className='grid grid-cols-6 grid-rows-2 place-items-center'>
+      <div className='grid grid-cols-6 grid-rows-2 place-items-center desktop:max-w-5xl phone:max-w-sm'>
         <div className='col-span-1 row-span-2'>
           <Counter
             score={score}
@@ -67,7 +67,7 @@ const Comment = ({
             setIsScoreDisabled={setIsScoreDisabled}
           ></Counter>
         </div>
-        <div className='col-span-3 row-span-1 w-full items-center'>
+        <div className='flex flex-row col-span-3 row-span-1 w-full items-center'>
           <img
             src={`src/images/avatars/image-${usernameCheck()}.png`}
             alt='avatar image'
@@ -88,9 +88,11 @@ const Comment = ({
             Delete
           </button>
         )}
-        <button className='btn-primary @apply' onClick={toggleReplyTextarea}>
-          Reply
-        </button>
+        {username !== currentUser && (
+          <button className='btn-primary @apply' onClick={toggleReplyTextarea}>
+            Reply
+          </button>
+        )}
         <Modal
           isOpen={isModalOpen}
           handleCancelDelete={handleDeleteModalClose}
@@ -107,11 +109,11 @@ const Comment = ({
             <p>{content}</p>
           )}
         </div>
-        {!replyTextArea && (
-          <ReplyTextArea comment={comment} replyTo={replyingTo} />
-        )}
       </div>
-      <div className='w-2/3'>
+      {!replyTextArea && (
+        <ReplyTextArea comment={comment} replyTo={replyingTo} />
+      )}
+      <div className='w-4/5'>
         {replies?.map((reply) => (
           <Comment key={reply.id} {...reply} comment={comment} />
         ))}

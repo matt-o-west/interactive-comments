@@ -4,8 +4,12 @@
 
 @layer base {
   .App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    background: 'very.light.gray';
+    background-color: 'very.light.gray';
   }
 }
 
