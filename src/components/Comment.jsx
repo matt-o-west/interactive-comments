@@ -136,9 +136,9 @@ const Comment = ({
       {!replyTextArea && (
         <ReplyTextArea comment={comment} replyTo={replyingTo} />
       )}
-      <div className='pl-20 border-l-4 ml-20'>
+      <div className='border-l-4 ml-20'>
         {/* container for replies */}
-        <div className='flex flex-col w-11/12'>
+        <div className='flex flex-col w-11/12 ml-10'>
           {replies?.map((reply) => (
             <Comment key={reply.id} {...reply} comment={comment} />
           ))}
