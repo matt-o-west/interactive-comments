@@ -57,7 +57,7 @@ const Comment = ({
 
   return (
     <>
-      <div className='grid grid-cols-7 grid-rows-2 place-items-center my-8 desktop:max-w-5xl tablet:max-w-4xl phone:max-w-md'>
+      <div className='grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-0 place-items-center my-4 desktop:max-w-4xl tablet:max-w-3xl phone:max-w-md'>
         <div className='col-span-1 row-span-2'>
           <Counter
             score={score}
@@ -71,11 +71,11 @@ const Comment = ({
           <img
             src={`src/images/avatars/image-${usernameCheck()}.png`}
             alt='avatar image'
-            className='px-5'
+            className='w-12 mx-4 pt-3'
           />
-          <p className='w-1/5 font-medium'>{username}</p>
+          <p className='w-1/5 font-medium mr-4'>{username}</p>
           {username === currentUser && (
-            <span className='bg-moderate.blue text-white font-medium p-0.5 px-2 rounded-sm mr-8'>
+            <span className='bg-moderate.blue text-white font-medium p-0.5 px-2 mx-6 rounded-sm'>
               me
             </span>
           )}
@@ -85,7 +85,7 @@ const Comment = ({
           {username === currentUser && (
             <button onClick={toggleEditTextarea} className='edit-btn'>
               <img
-                src='src/images/icon-reply.svg'
+                src='src/images/icon-edit.svg'
                 alt='reply icon'
                 className='fill-current'
               />
@@ -108,10 +108,11 @@ const Comment = ({
 
           {username !== currentUser && (
             <button
-              className='btn-primary @apply'
+              className='reply-btn hover:text-moderate.blue ml-20'
               onClick={toggleReplyTextarea}
             >
-              Reply
+              <img src='src/images/icon-reply.svg' alt='reply icon' />
+              <span className='pl-3'>Reply</span>
             </button>
           )}
         </div>
@@ -120,7 +121,7 @@ const Comment = ({
           handleCancelDelete={handleDeleteModalClose}
           handleConfirmDelete={handleConfirmDelete}
         />
-        <div className='col-span-6 row-span-1'>
+        <div className='col-span-6 row-span-1 my-3 mx-4'>
           {editTextArea ? (
             <EditTextArea
               id={id}
@@ -135,10 +136,13 @@ const Comment = ({
       {!replyTextArea && (
         <ReplyTextArea comment={comment} replyTo={replyingTo} />
       )}
-      <div className='w-1/2 ml-16'>
-        {replies?.map((reply) => (
-          <Comment key={reply.id} {...reply} comment={comment} />
-        ))}
+      <div className='pl-20 border-l-4 ml-20'>
+        {/* container for replies */}
+        <div className='flex flex-col w-11/12'>
+          {replies?.map((reply) => (
+            <Comment key={reply.id} {...reply} comment={comment} />
+          ))}
+        </div>
       </div>
     </>
   )
