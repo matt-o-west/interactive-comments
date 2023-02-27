@@ -41,7 +41,7 @@ const Counter = ({
   return (
     <div className='h-full w-12 rounded-lg flex flex-col justify-center items-center py-2 bg-light.gray relative z-10'>
       <button
-        onClick={(e) => console.log('Clicked', e)}
+        onClick={handleUpvoteClick}
         disabled={isScoreDisabled}
         className='p-3 py-2 relative z-10'
       >
@@ -54,7 +54,7 @@ const Counter = ({
         readOnly
       />
       <button
-        onClick={(e) => console.log('Clicked', e)}
+        onClick={handleDownvoteClick}
         disabled={isScoreDisabled}
         className='p-3'
       >

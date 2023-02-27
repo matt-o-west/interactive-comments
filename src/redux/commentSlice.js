@@ -66,7 +66,9 @@ const slice = {
             comment.replies = comment.replies.filter((reply) => reply.id !== id)
           } else {
             // Remove the comment and all its replies
-            comments = comments.filter((c) => c.id !== id)
+            return {
+              comments: comments.filter((c) => c.id !== id),
+            }
           }
         } else {
           // If the comment isn't the one to remove, check its replies
