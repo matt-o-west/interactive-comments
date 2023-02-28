@@ -14,36 +14,30 @@ const Counter = ({
 
   useEffect(() => {
     checkHasVoted()
-  }, [comment?.hasVoted, isScoreDisabled])
-
-  console.log('isScoreDisabled', isScoreDisabled)
+  }, [score, isScoreDisabled, setIsScoreDisabled, user]) || [comment?.hasVoted]
 
   const checkHasVoted = () => {
-    if (!comment?.hasVoted) {
-      setIsScoreDisabled(false)
-    } else {
+    if (comment?.hasVoted || isScoreDisabled) {
       setIsScoreDisabled(true)
     }
   }
 
   const handleUpvoteClick = () => {
-    console.log('Upvote')
     dispatch(incrementScore(id, user))
     setIsScoreDisabled(true)
   }
 
   const handleDownvoteClick = () => {
-    console.log('Downvote')
     dispatch(decrementScore(id, user))
     setIsScoreDisabled(true)
   }
 
   return (
-    <div className='h-full w-12 rounded-lg flex flex-col justify-center items-center py-2 bg-light.gray relative z-10'>
+    <div className='h-full w-12 rounded-lg flex flex-col justify-center items-center py-2 bg-light.gray'>
       <button
         onClick={handleUpvoteClick}
         disabled={isScoreDisabled}
-        className='p-3 py-2 relative z-10'
+        className='p-3 py-2'
       >
         <img src='src/images/icon-plus.svg' alt='upvote' />
       </button>
