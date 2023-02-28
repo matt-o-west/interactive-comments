@@ -128,14 +128,15 @@ const slice = {
     incrementScore: (state, action) => {
       const { comments } = state
       const commentToIncrement = findCommentById(action.payload, comments)
-      if (commentToIncrement && !commentToIncrement.hasVoted) {
+      console.log(commentToIncrement && !commentToIncrement.hasVoted)
+      if (commentToIncrement) {
         const isReply = /^reply-\d+$/.test(action.payload)
         if (isReply) {
-          console.log(state.comments)
+          //console.log(state.comments)
           commentToIncrement.score++
           commentToIncrement.hasVoted = true // add hasVoted property, disables button in component
         } else if (!isReply) {
-          console.log(state.comments)
+          //console.log(state.comments)
           commentToIncrement.score++
           commentToIncrement.hasVoted = true // add hasVoted property, disables button in component
         }
@@ -144,10 +145,21 @@ const slice = {
     decrementScore: (state, action) => {
       const { comments } = state
       const commentToDecrement = findCommentById(action.payload, comments)
-      if (commentToDecrement) {
-        console.log(state.comments)
-        commentToDecrement.score--
-        commentToDecrement.hasVoted = true // add hasVoted property, disables button in component
+      if (
+        commentToDecrement &&
+        commentToDecrement.score > 0 &&
+        !commentToDecrement.hasVoted
+      ) {
+        const isReply = /^reply-\d+$/.test(action.payload)
+        if (isReply) {
+          //console.log(state.comments)
+          commentToDecrement.score--
+          commentToDecrement.hasVoted = true // add hasVoted property, disables button in component
+        } else if (!isReply) {
+          //console.log(state.comments)
+          commentToDecrement.score--
+          commentToDecrement.hasVoted = true // add hasVoted property, disables button in component
+        }
       }
     },
     resetState: () => {
