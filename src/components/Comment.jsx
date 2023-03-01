@@ -24,7 +24,7 @@ const Comment = ({
   const [isModalOpen, setModalOpen] = useState(false)
   const [isScoreDisabled, setIsScoreDisabled] = useState(false)
   const { username } = user
-  console.log(replyingTo)
+  //console.log(replyingTo)
 
   const handleDeleteModalOpen = () => {
     setModalOpen(true)

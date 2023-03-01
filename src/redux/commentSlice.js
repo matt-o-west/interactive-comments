@@ -54,32 +54,47 @@ const slice = {
       }
       comments.push(newComment)
     },
+    //this reducer could be reworked
     removeComment: (state, action) => {
       const { comments } = state
       const { id, isReply } = action.payload
-      //const commentToDelete = findCommentById(id, comments)
 
-      comments.forEach((comment) => {
+      const updatedComments = comments.map((comment) => {
         if (comment.id === id) {
           if (isReply) {
             // Find the reply with the matching ID and remove it
-            comment.replies = comment.replies.filter((reply) => reply.id !== id)
+            return {
+              ...comment,
+              replies: comment.replies.filter((reply) => reply.id !== id),
+            }
           } else {
             // Remove the comment and all its replies
-            return {
-              comments: comments.filter((c) => c.id !== id),
-            }
+            console.log('removing parent comment', comment)
+            return null
           }
         } else {
           // If the comment isn't the one to remove, check its replies
-          comment.replies = comment.replies.filter((reply) => {
-            if (reply.id === id) {
-              return false // Remove the reply
-            }
-            return true // Keep the reply
-          })
+          return {
+            ...comment,
+            replies: comment.replies.filter((reply) => {
+              if (reply.id === id) {
+                return false // Remove the reply
+              }
+              return true // Keep the reply
+            }),
+          }
         }
       })
+
+      // Remove the comments that were deleted
+      const filteredComments = updatedComments.filter(
+        (comment) => comment !== null
+      )
+
+      return {
+        ...state,
+        comments: filteredComments,
+      }
     },
     editComment: (state, action) => {
       const { id, edit } = action.payload
