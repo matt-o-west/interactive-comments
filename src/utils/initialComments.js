@@ -29,7 +29,7 @@ export const initialComments = [
     },
     replies: [
       {
-        id: 3,
+        id: 2 + '-reply-' + '8f346688-1b5a-4c3f-8cb6-fbdf29d0fecc',
         content:
           "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
         createdAt: '1 week ago',
@@ -44,7 +44,7 @@ export const initialComments = [
         },
       },
       {
-        id: 4,
+        id: 2 + '-reply-' + '1024a97e-0ce2-4d1d-aa2f-ef24e95577bb',
         content:
           "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
         createdAt: '2 days ago',
