@@ -57,7 +57,7 @@ const Comment = ({
 
   return (
     <>
-      <div className='grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-0 place-items-center my-4 desktop:max-w-4xl tablet:max-w-3xl phone:max-w-md'>
+      <div className='grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4 desktop:max-w-4xl tablet:max-w-3xl phone:max-w-md'>
         <div className='col-span-1 row-span-2'>
           <Counter
             score={score}
@@ -121,7 +121,7 @@ const Comment = ({
           handleCancelDelete={handleDeleteModalClose}
           handleConfirmDelete={handleConfirmDelete}
         />
-        <div className='col-span-6 row-span-1 my-3 mx-4'>
+        <div className='col-span-6 row-span-1 my-3 mx-4 justify-self-start'>
           {editTextArea ? (
             <EditTextArea
               id={id}
@@ -134,11 +134,15 @@ const Comment = ({
         </div>
       </div>
       {!replyTextArea && (
-        <ReplyTextArea comment={comment} replyTo={replyingTo} />
+        <ReplyTextArea
+          comment={comment}
+          replyTo={replyingTo}
+          toggleReplyTextarea={toggleReplyTextarea}
+        />
       )}
       <div className='border-l-4 ml-20'>
         {/* container for replies */}
-        <div className='flex flex-col w-11/12 ml-10'>
+        <div className='flex flex-col w-11/12 ml-10 min-w-11/12'>
           {replies?.map((reply) => (
             <Comment key={reply.id} {...reply} comment={comment} />
           ))}

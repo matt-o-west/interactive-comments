@@ -54,7 +54,7 @@ const slice = {
       }
       comments.push(newComment)
     },
-    //this reducer could be reworked
+    //this reducer could be reworked or split into a removeReply reducer
     removeComment: (state, action) => {
       const { comments } = state
       const { id, isReply } = action.payload
@@ -113,7 +113,7 @@ const slice = {
 
       const newReply = {
         id: commentToReplyTo.id + ' reply ' + uuidv4().toString(),
-        content: reply,
+        content: `@${replyingTo} ${reply}`,
         createdAt: localeTime,
         score: 0,
         user: {
@@ -130,7 +130,7 @@ const slice = {
         commentToReplyTo.replies.push(newReply)
       }
     },
-    removeReply: (state, action) => {
+    /*removeReply: (state, action) => {
       const { id, replyId } = action.payload
       const { comments } = state
       const commentToReplyTo = findCommentById(id, comments)
@@ -139,7 +139,7 @@ const slice = {
           (reply) => reply.id !== replyId
         )
       }
-    },
+    },*/
     incrementScore: (state, action) => {
       const { comments } = state
       const commentToIncrement = findCommentById(action.payload, comments)
@@ -192,7 +192,7 @@ export const {
   removeComment,
   editComment,
   addReply,
-  removeReply,
+  //removeReply,
   incrementScore,
   decrementScore,
   resetState,

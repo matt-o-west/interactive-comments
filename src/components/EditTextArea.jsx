@@ -28,7 +28,7 @@ const EditTextArea = ({ id, content, handleEditClick }) => {
       <form onSubmit={handleEditSubmit}>
         <textarea
           type='textarea'
-          className='w-2/3'
+          className='col-span-5'
           placeholder='Reply to this comment'
           onChange={handleEditChange}
           value={edit}
