@@ -24,21 +24,28 @@ const EditTextArea = ({ id, content, handleEditClick }) => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleEditSubmit}>
+    <>
+      <form
+        onSubmit={handleEditSubmit}
+        className='flex flex-row gap-4 justify-center items-center desktop:w-[700px] laptop:w-[600px] tablet:w-[500px] phone:w-[240px]'
+      >
         <textarea
+          className='w-4/5 h-2/3 resize-none border border-gray-300 rounded-md py-4 px-2'
           type='textarea'
-          className='col-span-5'
           placeholder='Reply to this comment'
           onChange={handleEditChange}
           value={edit}
           ref={textareaRef}
-        ></textarea>
-        <button type='submit' value='Submit'>
+        />
+        <button
+          type='submit'
+          value='Submit'
+          className='btn-primary @apply self-start'
+        >
           Update
         </button>
       </form>
-    </div>
+    </>
   )
 }
 

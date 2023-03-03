@@ -57,7 +57,7 @@ const Comment = ({
 
   return (
     <>
-      <div className='grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4 desktop:max-w-4xl tablet:max-w-3xl phone:max-w-md'>
+      <div className='grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4 desktop:max-w-4xl tablet:max-w-3xl tablet:mx-4 phone:max-w-md'>
         <div className='col-span-1 row-span-2'>
           <Counter
             score={score}

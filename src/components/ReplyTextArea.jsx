@@ -15,6 +15,13 @@ const ReplyTextArea = ({ comment, replyTo, toggleReplyTextarea }) => {
     textareaRef.current.focus()
   }, [])
 
+  const handleReplyChange = (e) => {
+    const value = e.target.value
+    setReply(
+      value.replace(`@${replyTo}`, `<span class="reply-tag">@${replyTo}</span>`)
+    )
+  }
+
   const handleReplySubmit = (e) => {
     e.preventDefault()
     console.log('submit', {
