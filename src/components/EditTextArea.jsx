@@ -27,10 +27,10 @@ const EditTextArea = ({ id, content, handleEditClick }) => {
     <>
       <form
         onSubmit={handleEditSubmit}
-        className='flex flex-row gap-4 justify-center items-center desktop:w-[700px] laptop:w-[600px] tablet:w-[500px] phone:w-[240px]'
+        className='flex flex-row gap-4 justify-center items-center desktop:w-[700px] desktop:pr-20 laptop:w-[525px] tablet:w-[480px] phone:w-[240px] '
       >
         <textarea
-          className='w-4/5 h-2/3 resize-none border border-gray-300 rounded-md py-4 px-2'
+          className='w-4/5 h-2/3 resize-none border border-gray-300 rounded-md py-4 px-2 tablet:max-h-32 tablet:px-2 phone:py-1 phone:px-1'
           type='textarea'
           placeholder='Reply to this comment'
           onChange={handleEditChange}

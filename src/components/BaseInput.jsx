@@ -21,7 +21,7 @@ const BaseInput = () => {
     <>
       <form
         onSubmit={handleCommentSubmit}
-        className='flex flex-row w-4/5 ml-2 justify-center items-center bg-white rounded-xl px-10 py-6 my-4 space-x-4 desktop:max-w-4xl tablet:max-w-3xl phone:max-w-md'
+        className='flex flex-row w-4/5 ml-5 justify-center items-center bg-white rounded-xl px-10 py-6 my-4 space-x-4 desktop:max-w-4xl tablet:max-w-3xl phone:max-w-md'
       >
         <img
           src={`src/${avatar}`}
@@ -35,7 +35,11 @@ const BaseInput = () => {
           type='textarea'
           className='w-4/5 h-2/3 resize-none border border-gray-300 rounded-md py-6'
         />
-        <button type='submit' value='Submit' className='btn-primary @apply'>
+        <button
+          type='submit'
+          value='Submit'
+          className='btn-primary @apply self-start'
+        >
           Submit
         </button>
       </form>

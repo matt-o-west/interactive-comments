@@ -102,7 +102,7 @@ const Comment = ({
                 alt='delete icon'
                 className='fill-current'
               />
-              <span className='pl-3'>Delete</span>
+              <span className='pl-3 tablet:pr-6'>Delete</span>
             </button>
           )}
 
@@ -133,19 +133,20 @@ const Comment = ({
           )}
         </div>
       </div>
-      {!replyTextArea && (
-        <ReplyTextArea
-          comment={comment}
-          replyTo={replyingTo}
-          toggleReplyTextarea={toggleReplyTextarea}
-        />
-      )}
-      <div className='border-l-4 ml-20'>
+
+      <div className='border-l-4 ml-28 tablet:ml-10'>
         {/* container for replies */}
-        <div className='flex flex-col w-11/12 ml-10 min-w-11/12'>
+        <div className='flex flex-col w-11/12 ml-6 min-w-11/12 tablet:ml-6'>
           {replies?.map((reply) => (
             <Comment key={reply.id} {...reply} comment={comment} />
           ))}
+          {!replyTextArea && (
+            <ReplyTextArea
+              comment={comment}
+              replyTo={replyingTo}
+              toggleReplyTextarea={toggleReplyTextarea}
+            />
+          )}
         </div>
       </div>
     </>
