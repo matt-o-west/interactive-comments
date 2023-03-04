@@ -7,13 +7,13 @@ const ReplyTextArea = ({
   comment,
   replyTo,
   toggleReplyTextarea,
-  parentCommentUser,
+  replyToUser,
 }) => {
   const [reply, setReply] = useState('')
   const dispatch = useDispatch()
   const user = useSelector((state) => state.userReducer.user.username)
   const textareaRef = useRef(null)
-  //console.log(comment)
+  console.log(replyTo, replyToUser)
   const replies = comment.replies ? comment.replies : comment
 
   useEffect(() => {
@@ -40,8 +40,7 @@ const ReplyTextArea = ({
         id: comment.id,
         reply: reply,
         user: user,
-        replyingTo: replyTo,
-        parentCommentUser: parentCommentUser,
+        replyingTo: replyTo || replyToUser,
       })
     )
     setReply('')

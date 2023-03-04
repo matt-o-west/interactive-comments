@@ -26,14 +26,15 @@ const BaseInput = () => {
         <img
           src={`src/${avatar}`}
           alt='avatar image'
-          className='w-14 border-2 rounded-full border-moderate.blue self-start'
+          className='w-14  rounded-full self-start'
         />
         <textarea
           onChange={(e) => {
             setBaseInput(e.target.value)
           }}
           type='textarea'
-          className='w-4/5 h-2/3 resize-none border border-gray-300 rounded-md py-6'
+          className='w-4/5 h-2/3 resize-none border border-gray-300 rounded-md py-6 px-4'
+          placeholder='Add a public comment...'
         />
         <button
           type='submit'

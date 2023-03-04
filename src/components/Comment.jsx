@@ -26,6 +26,10 @@ const Comment = ({
   const { username } = user
   //console.log(replyingTo)
 
+  if (!replyingTo) {
+    console.log('parent', replyingTo)
+  }
+
   const handleDeleteModalOpen = () => {
     setModalOpen(true)
   }
@@ -129,7 +133,18 @@ const Comment = ({
               handleEditClick={toggleEditTextarea}
             />
           ) : (
-            <p>{content}</p>
+            <p>
+              {content.split(' ')[0].startsWith('@') ? (
+                <>
+                  <span className=' text-moderate.blue rounded-sm p-1 font-bold'>
+                    {content.split(' ')[0]}
+                  </span>{' '}
+                  {content.slice(content.indexOf(' ') + 1)}
+                </>
+              ) : (
+                content
+              )}
+            </p>
           )}
         </div>
       </div>
@@ -145,9 +160,8 @@ const Comment = ({
           <div className='ml-8 mr-16'>
             <ReplyTextArea
               comment={comment}
-              replyTo={replyingTo}
               toggleReplyTextarea={toggleReplyTextarea}
-              parentCommentUser={username}
+              replyToUser={username}
             />
           </div>
         )}
@@ -156,9 +170,8 @@ const Comment = ({
       {!replyTextArea && replyingTo && (
         <ReplyTextArea
           comment={comment}
-          replyTo={replyingTo}
           toggleReplyTextarea={toggleReplyTextarea}
-          parentCommentUser={username}
+          replyToUser={username}
         />
       )}
     </>
