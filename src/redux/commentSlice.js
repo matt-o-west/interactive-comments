@@ -115,7 +115,7 @@ const slice = {
 
       const newReply = {
         id: commentToReplyTo.id + ' reply ' + uuidv4().toString(),
-        content: `@${replyingTo} ${reply}`,
+        content: `@${replyingTo ? replyingTo : user} ${reply}`,
         createdAt: localeTime,
         score: 0,
         user: {
