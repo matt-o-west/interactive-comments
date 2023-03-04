@@ -43,22 +43,29 @@ const ReplyTextArea = ({ comment, replyTo, toggleReplyTextarea }) => {
   }
 
   return (
-    <div>
-      <img src={`src/${avatar}`} />
-      <form onSubmit={handleReplySubmit}>
+    <>
+      <form
+        onSubmit={handleReplySubmit}
+        className='flex flex-row full ml-2 justify-center items-center bg-white rounded-xl px-10 py-6 my-4 space-x-4 desktop:max-w-4xl tablet:max-w-3xl phone:max-w-md'
+      >
+        <img src={`src/${avatar}`} />
         <textarea
           type='textarea'
-          className='w-2/3'
+          className='col-span-2 w-4/5 h-2/3 resize-none border border-gray-300 rounded-md py-4 px-4'
           placeholder='Reply to this comment'
           onChange={handleReplyChange}
           value={reply}
           ref={textareaRef}
         ></textarea>
-        <button type='submit' value='Submit' className='btn-primary @apply'>
-          Submit
+        <button
+          type='submit'
+          value='Submit'
+          className='btn-primary @apply self-start'
+        >
+          Reply
         </button>
       </form>
-    </div>
+    </>
   )
 }
 

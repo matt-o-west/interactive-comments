@@ -134,21 +134,32 @@ const Comment = ({
         </div>
       </div>
 
-      <div className='border-l-4 ml-28 tablet:ml-10'>
+      <div className='border-l-4 desktop:ml-28 laptop:ml-24 tablet:ml-20'>
         {/* container for replies */}
         <div className='flex flex-col w-11/12 ml-6 min-w-11/12 tablet:ml-6'>
           {replies?.map((reply) => (
             <Comment key={reply.id} {...reply} comment={comment} />
           ))}
-          {!replyTextArea && (
+        </div>
+        {!replyingTo && !replyTextArea && (
+          <div className='ml-8 mr-16'>
             <ReplyTextArea
               comment={comment}
               replyTo={replyingTo}
               toggleReplyTextarea={toggleReplyTextarea}
             />
-          )}
-        </div>
+          </div>
+        )}
       </div>
+
+      {!replyTextArea && replyingTo && (
+        <ReplyTextArea
+          comment={comment}
+          replyTo={replyingTo}
+          toggleReplyTextarea={toggleReplyTextarea}
+          user={user}
+        />
+      )}
     </>
   )
 }

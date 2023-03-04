@@ -58,6 +58,7 @@ const slice = {
     removeComment: (state, action) => {
       const { comments } = state
       const { id, isReply } = action.payload
+      //const comment = findCommentById(id, isReply ? comments : comments.replies)
 
       const updatedComments = comments.map((comment) => {
         if (comment.id === id) {
@@ -74,9 +75,10 @@ const slice = {
           }
         } else {
           // If the comment isn't the one to remove, check its replies
+          const replies = comment.replies || []
           return {
             ...comment,
-            replies: comment.replies.filter((reply) => {
+            replies: replies.filter((reply) => {
               if (reply.id === id) {
                 return false // Remove the reply
               }
