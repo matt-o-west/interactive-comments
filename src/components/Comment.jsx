@@ -25,10 +25,7 @@ const Comment = ({
   const [isScoreDisabled, setIsScoreDisabled] = useState(false)
   const { username } = user
   //console.log(replyingTo)
-
-  if (!replyingTo) {
-    console.log('parent', replyingTo)
-  }
+  const isReply = replyingTo ? true : false
 
   const handleDeleteModalOpen = () => {
     setModalOpen(true)
@@ -61,7 +58,11 @@ const Comment = ({
 
   return (
     <>
-      <div className='grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4 desktop:max-w-4xl tablet:max-w-3xl tablet:mx-4 phone:max-w-md'>
+      <div
+        className={`grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4  tablet:max-w-3xl tablet:mx-4 phone:max-w-md ${
+          !isReply ? 'desktop:parent-comment' : ''
+        }`}
+      >
         <div className='col-span-1 row-span-2'>
           <Counter
             score={score}

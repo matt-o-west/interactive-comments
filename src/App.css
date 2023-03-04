@@ -22,6 +22,11 @@
     @apply bg-gray-500 text-white font-bold py-2 px-4 rounded cursor-pointer hover:bg-light.gray;
   }
 
+  .parent-comment {
+    max-width: 48%;
+    min-width: 846px;
+  }
+
   .delete-btn {
     display: flex;
     flex-direction: row;
