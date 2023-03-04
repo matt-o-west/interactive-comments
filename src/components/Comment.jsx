@@ -147,6 +147,7 @@ const Comment = ({
               comment={comment}
               replyTo={replyingTo}
               toggleReplyTextarea={toggleReplyTextarea}
+              parentCommentUser={username}
             />
           </div>
         )}
@@ -157,7 +158,7 @@ const Comment = ({
           comment={comment}
           replyTo={replyingTo}
           toggleReplyTextarea={toggleReplyTextarea}
-          user={user}
+          parentCommentUser={username}
         />
       )}
     </>

@@ -109,13 +109,13 @@ const slice = {
     },
     addReply: (state, action) => {
       console.log('payload', action.payload)
-      const { id, reply, user, replyingTo } = action.payload
+      const { id, reply, user, replyingTo, parentCommentUser } = action.payload
       const { comments } = state
       const commentToReplyTo = findCommentById(id, comments)
 
       const newReply = {
         id: commentToReplyTo.id + ' reply ' + uuidv4().toString(),
-        content: `@${replyingTo ? replyingTo : user} ${reply}`,
+        content: `@${replyingTo ? replyingTo : parentCommentUser} ${reply}`,
         createdAt: localeTime,
         score: 0,
         user: {

@@ -61,7 +61,7 @@ const DeleteCommentModal = ({
             <span class='mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto'>
               <button
                 type='button'
-                className='btn-tertiary py-2 px-4 w-full rounded-md text-gray-700 focus:outline-none focus:shadow-outline-blue transition duration-150 ease-in-out sm:text-sm sm:leading-5'
+                className='btn-tertiary py-2 px-4 w-full rounded-md hover:bg-inherit bg-light.gray text-gray-700 focus:outline-none focus:shadow-outline-blue transition duration-150 ease-in-out sm:text-sm sm:leading-5'
                 onClick={handleCancelDelete}
               >
                 Cancel
