@@ -78,7 +78,7 @@ const Comment = ({
             alt='avatar image'
             className='w-12 mx-4 pt-3'
           />
-          <p className='w-1/5 font-medium mr-4'>{username}</p>
+          <p className='w-1/5 font-medium mr-4 phone:mr-8'>{username}</p>
           {username === currentUser && (
             <span className='bg-moderate.blue text-white font-medium p-0.5 px-2 mx-6 rounded-sm'>
               me
@@ -86,7 +86,7 @@ const Comment = ({
           )}
           <p className='font-light'>{getRelativeTime(createdAt)}</p>
         </div>
-        <div className='flex tablet:col-span-2 tablet:col-start-6 tablet:row-start-1 tablet:mr-0 phone:col-start-4 phone:row-start-3 phone:mr-24'>
+        <div className='flex tablet:col-span-2 tablet:col-start-6 tablet:row-start-1 tablet:mr-0 phone:col-start-4 phone:row-start-3 phone:mr-24 phone:mb-4'>
           {username === currentUser && (
             <button onClick={toggleEditTextarea} className='edit-btn'>
               <img
@@ -150,15 +150,15 @@ const Comment = ({
         </div>
       </div>
 
-      <div className='border-l-4 desktop:ml-28 laptop:ml-24 tablet:ml-20 phone:ml-10 phone:w-full'>
+      <div className='border-l-4 desktop:ml-10 laptop:ml-24 tablet:ml-20 phone:ml-6 phone:pl-2'>
         {/* container for replies */}
-        <div className='flex flex-col w-11/12 ml-6 min-w-11/12 tablet:ml-6'>
+        <div className='flex flex-col w-11/12 min-w-11/12'>
           {replies?.map((reply) => (
             <Comment key={reply.id} {...reply} comment={comment} />
           ))}
         </div>
         {!replyingTo && !replyTextArea && (
-          <div className='ml-8 mr-16'>
+          <div className='ml-2 mr-16'>
             <ReplyTextArea
               comment={comment}
               toggleReplyTextarea={toggleReplyTextarea}
