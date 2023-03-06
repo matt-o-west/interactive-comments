@@ -63,7 +63,7 @@ const Comment = ({
           !isReply ? 'desktop:parent-comment ' : ''
         }`}
       >
-        <div className='flex col-span-1 row-span-2 tablet:row-span-2 phone:col-start-1 phone:row-start-3 phone:row-span-1 '>
+        <div className='flex col-span-1 row-span-2 tablet:row-span-2 phone:col-start-1 phone:row-start-3 phone:row-span-1'>
           <Counter
             score={score}
             id={id}
@@ -158,7 +158,7 @@ const Comment = ({
           ))}
         </div>
         {!replyingTo && !replyTextArea && (
-          <div className='ml-2 mr-16'>
+          <div className='tablet:w-full tablet:mr-96 phone:px-0 phone:mr-12 phone:w-10/12'>
             <ReplyTextArea
               comment={comment}
               toggleReplyTextarea={toggleReplyTextarea}
