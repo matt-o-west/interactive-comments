@@ -33,7 +33,7 @@ const Counter = ({
   }
 
   return (
-    <div className='h-full w-12 rounded-lg flex flex-col justify-center items-center py-2 bg-light.gray'>
+    <div className='h-full w-12 rounded-lg flex flex-col justify-center items-center py-2 bg-light.gray tablet:flex-col tablet:w-12 phone:w-28 phone:flex-row-reverse'>
       <button
         onClick={handleUpvoteClick}
         disabled={isScoreDisabled}

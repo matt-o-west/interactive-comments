@@ -59,11 +59,11 @@ const Comment = ({
   return (
     <>
       <div
-        className={`grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4 tablet:grid-cols-7 tablet:grid-rows-2 tablet:max-w-3xl tablet:mx-4 phone:max-w-md phone:grid-rows-3 ${
-          !isReply ? 'desktop:parent-comment' : ''
+        className={`grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4 tablet:grid-rows-2 tablet:grid-cols-7 tablet:max-w-3xl tablet:mx-4 phone:max-w-md phone:grid-rows-3 phone:grid-cols-4 ${
+          !isReply ? 'desktop:parent-comment ' : ''
         }`}
       >
-        <div className='tablet:col-span-1 tablet:row-span-2 phone:col-start-1 phone:row-start-3 phone:row-span-1'>
+        <div className='flex col-span-1 row-span-2 tablet:row-span-2 phone:col-start-1 phone:row-start-3 phone:row-span-1'>
           <Counter
             score={score}
             id={id}
@@ -86,7 +86,7 @@ const Comment = ({
           )}
           <p className='font-light'>{getRelativeTime(createdAt)}</p>
         </div>
-        <div className='col-span-2 flex'>
+        <div className='flex tablet:col-span-2 tablet:col-start-6 tablet:row-start-1 phone:col-start-4 phone:row-start-3'>
           {username === currentUser && (
             <button onClick={toggleEditTextarea} className='edit-btn'>
               <img
@@ -113,7 +113,7 @@ const Comment = ({
 
           {username !== currentUser && (
             <button
-              className='reply-btn hover:text-moderate.blue ml-20'
+              className='reply-btn hover:text-moderate.blue ml-20  phone:col-start-3 phone:row-start-3'
               onClick={toggleReplyTextarea}
             >
               <img src='src/images/icon-reply.svg' alt='reply icon' />
@@ -126,7 +126,7 @@ const Comment = ({
           handleCancelDelete={handleDeleteModalClose}
           handleConfirmDelete={handleConfirmDelete}
         />
-        <div className='col-span-6 row-span-1 my-3 mx-4 justify-self-start'>
+        <div className='col-span-6 row-span-1 my-3 mx-4 justify-self-start phone:col-start-2 phone:row-start-2'>
           {editTextArea ? (
             <EditTextArea
               id={id}
