@@ -59,11 +59,11 @@ const Comment = ({
   return (
     <>
       <div
-        className={`grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4  tablet:max-w-3xl tablet:mx-4 phone:max-w-md ${
+        className={`grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4 tablet:grid-cols-7 tablet:grid-rows-2 tablet:max-w-3xl tablet:mx-4 phone:max-w-md phone:grid-rows-3 ${
           !isReply ? 'desktop:parent-comment' : ''
         }`}
       >
-        <div className='col-span-1 row-span-2'>
+        <div className='tablet:col-span-1 tablet:row-span-2 phone:col-start-1 phone:row-start-3 phone:row-span-1'>
           <Counter
             score={score}
             id={id}
