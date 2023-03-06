@@ -38,8 +38,6 @@ module.exports = {
       }),
     },
     screens: {
-      phone_small: '320px',
-
       phone: '375px',
 
       tablet: '640px',
