@@ -59,11 +59,11 @@ const Comment = ({
   return (
     <>
       <div
-        className={`grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4 tablet:grid-rows-2 tablet:grid-cols-7 tablet:max-w-3xl tablet:mx-4 phone:max-w-md phone:grid-rows-3 phone:grid-cols-4 ${
+        className={`grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4 tablet:grid-rows-2 tablet:grid-cols-7 tablet:max-w-3xl tablet:mx-4 phone:max-w-md phone:grid-rows-auto phone:grid-cols-4 phone:ml-2 phone:mr-4 phone:my-2 phone:py-0 phone:px-3 ${
           !isReply ? 'desktop:parent-comment ' : ''
         }`}
       >
-        <div className='flex col-span-1 row-span-2 tablet:row-span-2 phone:col-start-1 phone:row-start-3 phone:row-span-1'>
+        <div className='flex col-span-1 row-span-2 tablet:row-span-2 phone:col-start-1 phone:row-start-3 phone:row-span-1 '>
           <Counter
             score={score}
             id={id}
@@ -72,7 +72,7 @@ const Comment = ({
             setIsScoreDisabled={setIsScoreDisabled}
           ></Counter>
         </div>
-        <div className='flex flex-row col-span-4 row-span-1 w-full items-center'>
+        <div className='flex flex-row col-span-4 row-span-1 w-full items-center my-2'>
           <img
             src={`src/images/avatars/image-${usernameCheck()}.png`}
             alt='avatar image'
@@ -86,7 +86,7 @@ const Comment = ({
           )}
           <p className='font-light'>{getRelativeTime(createdAt)}</p>
         </div>
-        <div className='flex tablet:col-span-2 tablet:col-start-6 tablet:row-start-1 phone:col-start-4 phone:row-start-3'>
+        <div className='flex tablet:col-span-2 tablet:col-start-6 tablet:row-start-1 tablet:mr-0 phone:col-start-4 phone:row-start-3 phone:mr-24'>
           {username === currentUser && (
             <button onClick={toggleEditTextarea} className='edit-btn'>
               <img
@@ -126,7 +126,7 @@ const Comment = ({
           handleCancelDelete={handleDeleteModalClose}
           handleConfirmDelete={handleConfirmDelete}
         />
-        <div className='col-span-6 row-span-1 my-3 mx-4 justify-self-start phone:col-start-2 phone:row-start-2'>
+        <div className='col-span-6 row-span-1 my-3 mx-4 justify-self-start phone:my-0 phone:pb-4 tablet:col-start-2 phone:col-start-1 phone:row-start-2'>
           {editTextArea ? (
             <EditTextArea
               id={id}
@@ -150,7 +150,7 @@ const Comment = ({
         </div>
       </div>
 
-      <div className='border-l-4 desktop:ml-28 laptop:ml-24 tablet:ml-20'>
+      <div className='border-l-4 desktop:ml-28 laptop:ml-24 tablet:ml-20 phone:ml-10 phone:w-full'>
         {/* container for replies */}
         <div className='flex flex-col w-11/12 ml-6 min-w-11/12 tablet:ml-6'>
           {replies?.map((reply) => (
