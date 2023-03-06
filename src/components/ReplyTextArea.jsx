@@ -47,6 +47,13 @@ const ReplyTextArea = ({
     toggleReplyTextarea()
   }
 
+  const handleEditKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === 'Done') {
+      e.preventDefault()
+      e.target.form.dispatchEvent(new Event('submit', { cancelable: true }))
+    }
+  }
+
   return (
     <>
       <form
@@ -64,6 +71,7 @@ const ReplyTextArea = ({
           onChange={handleReplyChange}
           value={reply}
           ref={textareaRef}
+          onKeyDown={handleEditKeyDown}
         ></textarea>
         <button
           type='submit'
