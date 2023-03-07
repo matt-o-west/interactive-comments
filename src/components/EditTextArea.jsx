@@ -30,11 +30,16 @@ const EditTextArea = ({ id, content, handleEditClick }) => {
     handleEditClick()
   }
 
+  const handleBlur = (e) => {
+    e.preventDefault()
+    e.target.form.dispatchEvent(new Event('submit', { cancelable: true }))
+  }
+
   return (
     <>
       <form
         onSubmit={handleEditSubmit}
-        className='flex flex-row gap-4 justify-center items-center pt-2 desktop:w-[650px] desktop:pr-20 laptop:w-[525px] tablet:w-[460px] phone:w-[240px]'
+        className='flex flex-row gap-4 justify-center items-center pt-2 desktop:w-[650px] desktop:pr-20 laptop:w-[525px] tablet:w-[460px] phone:w-65'
       >
         <textarea
           className='w-4/5 h-2/3 resize-none border border-gray-300 rounded-md py-4 px-2 tablet:max-h-32 tablet:px-2 phone:py-1 phone:px-1 phone:w-full phone:h-28'
@@ -44,6 +49,7 @@ const EditTextArea = ({ id, content, handleEditClick }) => {
           value={edit}
           ref={textareaRef}
           onKeyDown={handleEditKeyDown}
+          onBlur={handleBlur}
         />
         <button
           type='submit'

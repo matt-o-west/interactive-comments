@@ -59,8 +59,8 @@ const Comment = ({
   return (
     <>
       <div
-        className={`grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4 w-full tablet:grid-rows-2 tablet:grid-cols-7 tablet:max-w-3xl tablet:mx-4 phone:max-w-md phone:grid-rows-auto phone:grid-cols-4 phone:ml-2 phone:mr-4 phone:my-2 phone:py-0 phone:px-3 ${
-          !isReply ? 'desktop:parent-comment ' : ''
+        className={`grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4 w-full tablet:grid-rows-2 tablet:grid-cols-7 tablet:max-w-3xl tablet:mx-4 phone:max-w-sm phone:grid-rows-auto phone:grid-cols-4 phone:ml-2 phone:mr-4 phone:my-2 phone:py-0 phone:px-3 ${
+          !isReply ? 'desktop:parent-comment' : ''
         }`}
       >
         <div className='flex col-span-1 row-span-2 tablet:row-span-2 phone:col-start-1 phone:row-start-3 phone:row-span-1'>
