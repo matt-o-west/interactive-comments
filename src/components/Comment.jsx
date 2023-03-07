@@ -59,7 +59,7 @@ const Comment = ({
   return (
     <>
       <div
-        className={`grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4 w-full tablet:grid-rows-2 tablet:grid-cols-7 tablet:max-w-3xl tablet:mx-4 phone:max-w-sm phone:grid-rows-auto phone:grid-cols-4 phone:ml-2 phone:mr-4 phone:my-2 phone:py-0 phone:px-3 ${
+        className={`grid grid-cols-7 grid-rows-2 bg-white rounded-xl pb-2 pt-1 place-items-center my-4 desktop:w-full tablet:grid-rows-2 tablet:grid-cols-7 tablet:max-w-2xl tablet:mx-4 phone:max-w-sm phone:grid-rows-auto phone:grid-cols-4 phone:ml-2 phone:mr-4 phone:my-2 phone:py-0 phone:px-3 ${
           !isReply ? 'desktop:parent-comment' : ''
         }`}
       >
@@ -150,15 +150,15 @@ const Comment = ({
         </div>
       </div>
 
-      <div className='border-l-4 desktop:ml-14 desktop:pl-8 laptop:ml-24 tablet:ml-20 phone:ml-10 phone:pl-2'>
+      <div className='border-l-4 desktop:ml-14 desktop:pl-8 laptop:ml-32 tablet:ml-20 phone:ml-10 phone:pl-2'>
         {/* container for replies */}
-        <div className='flex flex-col desktop:w-full desktop:mx-0 laptop:w-11/12 laptop:ml-0 laptop:pr-4 tablet:w-10/12 tablet:ml-4 tablet:pr-0 phone:w-11/12 phone:pr-2'>
+        <div className='flex flex-col desktop:w-full desktop:mx-0 laptop:w-11/12 laptop:ml-1 laptop:pr-4 tablet:w-11/12 tablet:ml-6 tablet:pr-0 phone:w-full phone:pr-2'>
           {replies?.map((reply) => (
             <Comment key={reply.id} {...reply} comment={comment} />
           ))}
         </div>
         {!replyingTo && !replyTextArea && (
-          <div className='w-11/12 tablet:mr-96 phone:px-0 phone:mr-20'>
+          <div className='w-11/12 tablet:mr-80 phone:px-0 phone:mr-20'>
             <ReplyTextArea
               comment={comment}
               toggleReplyTextarea={toggleReplyTextarea}

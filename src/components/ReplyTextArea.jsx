@@ -58,7 +58,7 @@ const ReplyTextArea = ({
     <>
       <form
         onSubmit={handleReplySubmit}
-        className='flex flex-row full ml-2 justify-center items-center bg-white rounded-xl px-10 py-6 my-4 space-x-4 desktop:max-w-4xl tablet:max-w-3xl phone:max-w-md phone:px-4'
+        className='flex flex-row w-full ml-6 justify-center items-center bg-white rounded-xl px-10 py-6 my-4 space-x-4 desktop:max-w-3xl desktop:w-full laptop:w-11/12 laptop:ml-4 tablet:max-w-2xl tablet:ml-6 phone:max-w-sm phone:px-4 phone:ml-2'
       >
         <img
           src={`src/${avatar}`}

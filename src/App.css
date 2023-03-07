@@ -23,8 +23,8 @@
   }
 
   .parent-comment {
-    max-width: 48%;
-    min-width: 846px;
+    max-width: 32%;
+    min-width: 800px;
   }
 
   .delete-btn {
