@@ -132,16 +132,6 @@ const slice = {
         commentToReplyTo.replies.push(newReply)
       }
     },
-    /*removeReply: (state, action) => {
-      const { id, replyId } = action.payload
-      const { comments } = state
-      const commentToReplyTo = findCommentById(id, comments)
-      if (commentToReplyTo) {
-        commentToReplyTo.replies = commentToReplyTo.replies.filter(
-          (reply) => reply.id !== replyId
-        )
-      }
-    },*/
     incrementScore: (state, action) => {
       const { comments } = state
       const commentToIncrement = findCommentById(action.payload, comments)
@@ -162,11 +152,7 @@ const slice = {
     decrementScore: (state, action) => {
       const { comments } = state
       const commentToDecrement = findCommentById(action.payload, comments)
-      if (
-        commentToDecrement &&
-        commentToDecrement.score > 0 &&
-        !commentToDecrement.hasVoted
-      ) {
+      if (commentToDecrement && !commentToDecrement.hasVoted) {
         const isReply = /^reply-\d+$/.test(action.payload)
         if (isReply) {
           //console.log(state.comments)
@@ -194,7 +180,6 @@ export const {
   removeComment,
   editComment,
   addReply,
-  //removeReply,
   incrementScore,
   decrementScore,
   resetState,

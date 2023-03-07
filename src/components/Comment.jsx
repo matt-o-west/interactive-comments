@@ -150,15 +150,15 @@ const Comment = ({
         </div>
       </div>
 
-      <div className='border-l-4 desktop:ml-14 desktop:pl-8 laptop:ml-24 tablet:ml-20 phone:ml-6 phone:pl-2'>
+      <div className='border-l-4 desktop:ml-14 desktop:pl-8 laptop:ml-24 tablet:ml-20 phone:ml-10 phone:pl-2'>
         {/* container for replies */}
-        <div className='flex flex-col w-11/12 min-w-11/12'>
+        <div className='flex flex-col desktop:w-full desktop:mx-0 laptop:w-11/12 laptop:ml-0 laptop:pr-4 tablet:w-10/12 tablet:ml-4 tablet:pr-0 phone:w-11/12 phone:pr-2'>
           {replies?.map((reply) => (
             <Comment key={reply.id} {...reply} comment={comment} />
           ))}
         </div>
         {!replyingTo && !replyTextArea && (
-          <div className='tablet:w-full tablet:mr-96 phone:px-0 phone:mr-12 phone:w-10/12'>
+          <div className='w-11/12 tablet:mr-96 phone:px-0 phone:mr-20'>
             <ReplyTextArea
               comment={comment}
               toggleReplyTextarea={toggleReplyTextarea}

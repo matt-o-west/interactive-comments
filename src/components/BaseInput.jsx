@@ -21,7 +21,7 @@ const BaseInput = () => {
     <>
       <form
         onSubmit={handleCommentSubmit}
-        className='flex flex-row w-4/5 ml-2 justify-center items-center bg-white rounded-xl px-10 py-6 my-4 space-x-4 desktop:max-w-4xl tablet:flex tablet:flex-row tablet:space-x-4 tablet:max-w-3xl phone:max-w-md phone:w-11/12 phone:grid phone:grid-rows-auto phone:grid-cols-2 phone:pl-4 phone:pr-4 phone:py-4 phone:pt-0 phone:space-x-0 phone:space-y-4'
+        className='flex flex-row w-4/5 ml-2 justify-center items-center bg-white rounded-xl px-10 py-6 my-4 space-x-4 desktop:max-w-4xl tablet:flex tablet:flex-row tablet:space-x-4 tablet:max-w-3xl tablet:mr-2 phone:max-w-md phone:w-11/12 phone:grid phone:grid-rows-auto phone:grid-cols-2 phone:pl-4 phone:pr-4 phone:py-4 phone:pt-0 phone:space-x-0 phone:space-y-4 phone:mr-4'
       >
         <img
           src={`src/${avatar}`}
