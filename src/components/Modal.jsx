@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import deleteIcon from '../images/icon-delete.svg'
 
 const DeleteCommentModal = ({
   isOpen,
@@ -24,11 +25,7 @@ const DeleteCommentModal = ({
               {/*Icon*/}
               <div className='mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10'>
                 {/*Heroicon name: exclamation*/}
-                <img
-                  src='src/images/icon-delete.svg'
-                  alt='delete icon'
-                  className='w-5'
-                />
+                <img src={deleteIcon} alt='delete icon' className='w-5' />
               </div>
 
               {/*Confirmation message*/}
