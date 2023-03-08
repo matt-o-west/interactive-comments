@@ -6,6 +6,7 @@ import ReplyTextArea from './ReplyTextArea'
 import EditTextArea from './EditTextArea'
 import Modal from './Modal'
 import { getRelativeTime } from '../utils/getRelativeTime'
+import { getAvatar } from '../utils/getAvatar'
 
 import deleteIcon from '../images/icon-delete.svg'
 import editIcon from '../images/icon-edit.svg'
@@ -60,6 +61,9 @@ const Comment = ({
     return username ? username : currentUser
   }
 
+  const avatar = getAvatar(usernameCheck())
+  console.log(avatar)
+
   return (
     <>
       <div
@@ -77,11 +81,7 @@ const Comment = ({
           ></Counter>
         </div>
         <div className='flex flex-row col-span-4 row-span-1 w-full items-center my-2'>
-          <img
-            src={`src/images/avatars/image-${usernameCheck()}.png`}
-            alt='avatar image'
-            className='w-12 mx-4 pt-3'
-          />
+          <img src={avatar} alt='avatar image' className='w-12 mx-4 pt-3' />
           <p className='w-1/5 font-medium mr-4 phone:mr-8'>{username}</p>
           {username === currentUser && (
             <span className='bg-moderate.blue text-white font-medium p-0.5 px-2 mx-6 rounded-sm'>

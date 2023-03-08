@@ -4,6 +4,7 @@ import maxAvatar from '../images/avatars/image-maxblagun.png'
 import ramsesAvatar from '../images/avatars/image-ramsesmiron.png'
 
 export const getAvatar = (username) => {
+  console.log(username)
   switch (username) {
     case 'amyrobson':
       return amyAvatar
