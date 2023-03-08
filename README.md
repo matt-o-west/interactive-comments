@@ -15,8 +15,6 @@ This is a solution to the [Interactive comments section challenge on Frontend Me
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -52,8 +50,6 @@ I built out this project using React, Redux and Tailwind. I used Redux to manage
 - [Redux](https://redux.js.org/) - State management
 - [Tailwind](https://tailwindcss.com/) - For styles
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
 ### What I learned
 
 I ran into quite a few challenges, specifically with the counter logic and adding threads of replies while not violating DRY. I was able to solve these issues by using a combination of Redux and plain javascript, using a recursive function in my comment slice to easily find and update comments. I toyed with implementing the scoring in a separate slice, but decided to keep it in the comment slice for simplicity and ease of access. I also used a combination of Tailwind and custom CSS to style the components. I added a custom color palette into my Tailwind config, as well as custom classes, to achieve much of the desired design.
@@ -75,13 +71,9 @@ function findCommentById(id, comments) {
 }
 ```
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
 ### Continued development
 
 I want to continue to focus on responsive-styling and Tailwind - in my next projects I will be doing a mobile-first approach, and will add tests for responsive-styling and accessibility. I also want to continue to improve my Redux skills, and will be working on a larger project in the near future that will require more complex state management. I also plan to add a React framework, like Next.js or Remix, as well as consistently implementing projects with Typescript (which I have learned but have not yet implemented in a larger project).
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
 
 ### Useful resources
 
@@ -91,10 +83,6 @@ I want to continue to focus on responsive-styling and Tailwind - in my next proj
 - [Frontend Mentor](https://www.frontendmentor.io/) - This is where I found the challenge, and I used it to reference the design and requirements.
 - [Frontend Masters](https://frontendmasters.com/) - This is where I learned React, Redux, and Tailwind.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
 ## Author
 
 I'm a developer working out of nyc! If you like what you see and want to work together, please shoot me a message on LinkedIn [here](https://www.linkedin.com/in/matthew-west-342b0965/)!
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
