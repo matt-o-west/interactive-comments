@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { incrementScore, decrementScore } from '../redux/commentSlice'
 
+import plusIcon from '../images/icon-plus.svg'
+import minusIcon from '../images/icon-minus.svg'
+
 const Counter = ({
   score,
   id,
@@ -39,7 +42,7 @@ const Counter = ({
         disabled={isScoreDisabled}
         className='p-3 py-2'
       >
-        <img src='src/images/icon-plus.svg' alt='upvote' />
+        <img src={plusIcon} alt='upvote' />
       </button>
       <input
         type='text'
@@ -52,7 +55,7 @@ const Counter = ({
         disabled={isScoreDisabled}
         className='p-3'
       >
-        <img src='src/images/icon-minus.svg' alt='downvote' />
+        <img src={minusIcon} alt='downvote' />
       </button>
     </div>
   )

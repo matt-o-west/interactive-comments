@@ -7,6 +7,10 @@ import EditTextArea from './EditTextArea'
 import Modal from './Modal'
 import { getRelativeTime } from '../utils/getRelativeTime'
 
+import deleteIcon from '../images/icon-delete.svg'
+import editIcon from '../images/icon-edit.svg'
+import replyIcon from '../images/icon-reply.svg'
+
 const Comment = ({
   content,
   createdAt,
@@ -89,11 +93,7 @@ const Comment = ({
         <div className='flex tablet:col-span-2 tablet:col-start-6 tablet:row-start-1 tablet:mr-0 phone:col-start-4 phone:row-start-3 phone:mr-24 phone:mb-4'>
           {username === currentUser && (
             <button onClick={toggleEditTextarea} className='edit-btn'>
-              <img
-                src='src/images/icon-edit.svg'
-                alt='reply icon'
-                className='fill-current'
-              />
+              <img src={editIcon} alt='reply icon' className='fill-current' />
               <span className='pl-3'>Edit</span>
             </button>
           )}
@@ -103,7 +103,7 @@ const Comment = ({
               className='delete-btn hover:text-pale.red'
             >
               <img
-                src='src/images/icon-delete.svg'
+                src={deleteIcon}
                 alt='delete icon'
                 className='fill-current'
               />
@@ -116,7 +116,7 @@ const Comment = ({
               className='reply-btn hover:text-moderate.blue ml-20  phone:col-start-3 phone:row-start-3'
               onClick={toggleReplyTextarea}
             >
-              <img src='src/images/icon-reply.svg' alt='reply icon' />
+              <img src={replyIcon} alt='reply icon' />
               <span className='pl-3'>Reply</span>
             </button>
           )}

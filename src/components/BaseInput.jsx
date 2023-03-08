@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { addComment, resetState } from '../redux/commentSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { avatar } from '../redux/userSlice'
+import ramsesAvatar from '../images/avatars/image-ramsesmiron.png'
 
 const BaseInput = () => {
   // note to self: access to objects in each slice has to be done via name given to the reducer contained in store.js
@@ -24,7 +25,7 @@ const BaseInput = () => {
         className='flex flex-row w-4/5 ml-2 justify-center items-center bg-white rounded-xl px-10 py-6 my-4 space-x-4 desktop:max-w-4xl tablet:flex tablet:flex-row tablet:space-x-4 tablet:max-w-3xl tablet:mr-2 phone:max-w-md phone:w-11/12 phone:grid phone:grid-rows-auto phone:grid-cols-2 phone:pl-4 phone:pr-4 phone:py-4 phone:pt-0 phone:space-x-0 phone:space-y-4 phone:mr-4'
       >
         <img
-          src={`src/${avatar}`}
+          src={ramsesAvatar}
           alt='avatar image'
           className='w-14  rounded-full self-start phone:row-span-1 phone:row-start-2 phone:col-start-1 phone:w-9 phone:ml-4 phone:mt-4'
         />
