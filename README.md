@@ -14,7 +14,6 @@ This is a solution to the [Interactive comments section challenge on Frontend Me
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 **Note: Delete this note and update the table of contents based on what sections you keep.**
 
@@ -39,8 +38,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Repo](https://github.com/matt-o-west/interactive-comments)
+- Live Site URL: [Live Site w/ Vercel](https://interactive-comments-git-main-matt-o-west.vercel.app/)
 
 ## My process
 
@@ -49,7 +48,7 @@ I built out this project using React, Redux and Tailwind. I used Redux to manage
 ### Built with
 
 - [React](https://reactjs.org/) - JS library
-- [Vite] (https://vitejs.dev/) - Build tool
+- [Vite](https://vitejs.dev/) - Build tool
 - [Redux](https://redux.js.org/) - State management
 - [Tailwind](https://tailwindcss.com/) - For styles
 
